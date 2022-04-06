@@ -1,0 +1,46 @@
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\bin\Debug\ExamenTeorico.exe.config
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\bin\Debug\ExamenTeorico.exe
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\bin\Debug\ExamenTeorico.pdb
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.AssemblyReference.cache
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.Form1.resources
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.Properties.Resources.resources
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.GenerateResource.cache
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.CoreCompileInputs.cache
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.exe
+C:\Users\Aron Aguilar\Source\Repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.pdb
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\bin\Debug\ExamenTeorico.exe.config
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\bin\Debug\ExamenTeorico.exe
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\bin\Debug\ExamenTeorico.pdb
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.Consulta.resources
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.Datos.resources
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.Form1.resources
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.Properties.Resources.resources
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.GenerateResource.cache
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.CoreCompileInputs.cache
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.exe
+C:\Users\Andoni\source\repos\ExamenTeorico\ExamenTeorico\obj\Debug\ExamenTeorico.pdb
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.AssemblyReference.cache
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.Consulta.resources
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.Datos.resources
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.Form1.resources
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.Properties.Resources.resources
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.GenerateResource.cache
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.CoreCompileInputs.cache
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.exe
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.pdb
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\bin\Debug\ExamenTeorico.exe.config
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\bin\Debug\ExamenTeorico.exe
+C:\Users\Gabriel Valle\Downloads\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\bin\Debug\ExamenTeorico.pdb
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\bin\Debug\ExamenTeorico.exe.config
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\bin\Debug\ExamenTeorico.exe
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\bin\Debug\ExamenTeorico.pdb
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.AssemblyReference.cache
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.SuggestedBindingRedirects.cache
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.Consulta.resources
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.Datos.resources
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.Form1.resources
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.Properties.Resources.resources
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.GenerateResource.cache
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.CoreCompileInputs.cache
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.exe
+C:\Users\julio\OneDrive\Escritorio\ExamenTeorico_-_copia\ExamenTeorico - copia\ExamenTeorico\obj\Debug\ExamenTeorico.pdb
