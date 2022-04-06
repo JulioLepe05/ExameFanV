@@ -163,6 +163,8 @@ namespace ExamenTeorico
 
                                 dgvShow.Invoke((MethodInvoker)(() => dgvShow.DataSource = dtT));
 
+                                
+
                             };
                             break;
                         default:
@@ -200,9 +202,18 @@ namespace ExamenTeorico
         //}
         public void btnModificar_Click(object sender, EventArgs e)
         {
+            
+            var list = new List<string>(15);
+            for (int i = 0; i < 15; i++)
+            {
+                list.Add(dgvShow.Rows[0].Cells[i].Value.ToString());
+            }
+            
+
+
             this.Hide();
             panel.Controls.Clear();
-            Datos Frm = new Datos();
+            Datos Frm = new Datos(list);
             Frm.TopLevel = false;
             panel.Controls.Add(Frm);
             Frm.Show();

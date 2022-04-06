@@ -98,11 +98,29 @@ namespace ExamenTeorico
             txtCivil.Clear();
         }
 
-        public Datos()
+        public Datos(List<string> lista)
         {
             InitializeComponent();
             Thread thread1 = new Thread(iniciar);
             thread1.Start();
+            if (lista != null)
+            {
+                txtcodigo.Text=lista[0];
+                txtNombre.Text = lista[1];
+                txtapellidos.Text = lista[2];
+                txtedad.Text = lista[3];
+                txtnacionalidad.Text = lista[4];
+                txtGebero.Text = lista[5];
+                txtciudad.Text = lista[6];
+                txtestado.Text = lista[7];
+                txtuniversidad.Text = lista[8];
+                txtcarrera.Text = lista[9];
+                txtsemestre.Text = lista[10];
+                txtdeporte.Text = lista[11];
+                txtmain.Text = lista[12];
+                txtJugador.Text = lista[13];
+                txtCivil.Text = lista[14];
+            }
         }
 
         public void iniciar()

@@ -27,7 +27,7 @@ namespace ExamenTeorico
             this.panelPrincipal.Controls.Clear();
 
 
-            Datos Frm = new Datos();
+            Datos Frm = new Datos(null);
             Frm.TopLevel = false;
             panelPrincipal.Controls.Add(Frm);
             Frm.Show();
@@ -45,7 +45,7 @@ namespace ExamenTeorico
             this.panelPrincipal.Controls.Clear();
 
 
-            Datos Frm = new Datos();
+            Datos Frm = new Datos(null);
             Frm.TopLevel = false;
             panelPrincipal.Controls.Add(Frm);
             Frm.Show();

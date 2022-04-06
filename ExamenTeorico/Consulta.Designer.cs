@@ -40,17 +40,24 @@ namespace ExamenTeorico
             // cbxListado
             // 
             this.cbxListado.FormattingEnabled = true;
-            this.cbxListado.Location = new System.Drawing.Point(182, 59);
+            this.cbxListado.Location = new System.Drawing.Point(53, 111);
             this.cbxListado.Name = "cbxListado";
-            this.cbxListado.Size = new System.Drawing.Size(508, 21);
+            this.cbxListado.Size = new System.Drawing.Size(789, 21);
             this.cbxListado.TabIndex = 0;
             this.cbxListado.SelectedIndexChanged += new System.EventHandler(this.cbxListado_SelectedIndexChanged);
             // 
             // dgvShow
             // 
+            this.dgvShow.AllowUserToAddRows = false;
+            this.dgvShow.AllowUserToDeleteRows = false;
+            this.dgvShow.AllowUserToOrderColumns = true;
+            this.dgvShow.AllowUserToResizeColumns = false;
+            this.dgvShow.AllowUserToResizeRows = false;
             this.dgvShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShow.Location = new System.Drawing.Point(53, 154);
             this.dgvShow.Name = "dgvShow";
+            this.dgvShow.RowHeadersVisible = false;
+            this.dgvShow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShow.Size = new System.Drawing.Size(789, 240);
             this.dgvShow.TabIndex = 1;
             // 
