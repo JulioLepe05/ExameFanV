@@ -78,10 +78,10 @@ namespace ExamenTeorico
             txtJugador.Enabled = false;
             txtCivil.Enabled = false;
 
-            btnNuevo.Text = "Nuevo";
+            btnNuevo.Text = "Nuevo";//setea el nombre del boton
             
 
-            txtcodigo.Clear();
+            txtcodigo.Clear();//limpia los textos
             txtNombre.Clear();
             txtapellidos.Clear();
             txtedad.Clear();
