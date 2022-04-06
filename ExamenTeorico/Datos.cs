@@ -7,12 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Sockets;
+using System.Net;
+using System.Threading;
 
 namespace ExamenTeorico
 {
     public partial class Datos : Form
     {
+        private static readonly Socket ClientSocket = new Socket
+            (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
+        private const int PORT = 100;
 
         string datos;
 
@@ -95,11 +101,88 @@ namespace ExamenTeorico
         public Datos()
         {
             InitializeComponent();
+            Thread thread1 = new Thread(iniciar);
+            thread1.Start();
+        }
+
+        public void iniciar()
+        {
+            ConnectToServer();
+            RequestLoop();
+
+        }
+        private static void ConnectToServer()
+        {
+            int attempts = 0;
+
+            while (!ClientSocket.Connected)
+            {
+                try
+                {
+                    attempts++;
+                    ClientSocket.Connect(IPAddress.Loopback, PORT);
+                }
+                catch (SocketException)
+                {
+                }
+            }
+
+        }
+        private static void RequestLoop()
+        {
+
+            while (true)
+            {
+                ReceiveResponse();
+            }
+        }
+
+        /// <summary>
+        /// Close socket and exit program.
+        /// </summary>
+        private static void Exit()
+        {
+            SendString("exit"); // Tell the server we are exiting
+            ClientSocket.Shutdown(SocketShutdown.Both);
+            ClientSocket.Close();
+            Environment.Exit(0);
+        }
+
+        private static void SendRequest(string query)
+        {
+            //Console.Write("Send a request: ");
+            //string request = Console.ReadLine();
+            SendString(query);
+
+            if (query.ToLower() == "exit")
+            {
+                Exit();
+            }
+        }
+
+        /// <summary>
+        /// Sends a string to the server with ASCII encoding.
+        /// </summary>
+        private static void SendString(string text)
+        {
+            byte[] buffer = Encoding.ASCII.GetBytes(text);
+            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None);
+        }
+
+        private static void ReceiveResponse()
+        {
+            var buffer = new byte[2048];
+            int received = ClientSocket.Receive(buffer, SocketFlags.None);
+            if (received == 0) return;
+            var data = new byte[received];
+            Array.Copy(buffer, data, received);
+            string text = Encoding.ASCII.GetString(data);
+            
+            
+
         }
 
 
-
-        
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -293,9 +376,10 @@ namespace ExamenTeorico
                                                                         else
                                                                         {
                                                                             //estadocivil = txtCivil.Text;
-                                                                            datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGebero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil}";
+                                                                            datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGebero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
 
                                                                             MessageBox.Show("Datos Guardados con Exito","Aviso del Sistema",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                                                            SendRequest(datos);
                                                                         }
                                                                     }
                                                                 }
@@ -575,7 +659,7 @@ namespace ExamenTeorico
                 txtJugador.Clear();
                 txtCivil.Clear();
 
-                datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGebero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil}";
+                datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGebero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
             }
             
 

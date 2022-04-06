@@ -30,28 +30,29 @@ namespace ExamenTeorico
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Consulta));
-            this.cbconsulta = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cbxListado = new System.Windows.Forms.ComboBox();
+            this.dgvShow = new System.Windows.Forms.DataGridView();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).BeginInit();
             this.SuspendLayout();
             // 
-            // cbconsulta
+            // cbxListado
             // 
-            this.cbconsulta.FormattingEnabled = true;
-            this.cbconsulta.Location = new System.Drawing.Point(182, 59);
-            this.cbconsulta.Name = "cbconsulta";
-            this.cbconsulta.Size = new System.Drawing.Size(508, 21);
-            this.cbconsulta.TabIndex = 0;
+            this.cbxListado.FormattingEnabled = true;
+            this.cbxListado.Location = new System.Drawing.Point(182, 59);
+            this.cbxListado.Name = "cbxListado";
+            this.cbxListado.Size = new System.Drawing.Size(508, 21);
+            this.cbxListado.TabIndex = 0;
+            this.cbxListado.SelectedIndexChanged += new System.EventHandler(this.cbxListado_SelectedIndexChanged);
             // 
-            // dataGridView1
+            // dgvShow
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(53, 154);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(789, 240);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShow.Location = new System.Drawing.Point(53, 154);
+            this.dgvShow.Name = "dgvShow";
+            this.dgvShow.Size = new System.Drawing.Size(789, 240);
+            this.dgvShow.TabIndex = 1;
             // 
             // btnModificar
             // 
@@ -92,21 +93,21 @@ namespace ExamenTeorico
             this.ClientSize = new System.Drawing.Size(909, 547);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.cbconsulta);
+            this.Controls.Add(this.dgvShow);
+            this.Controls.Add(this.cbxListado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Consulta";
             this.Text = "Consulta";
             this.Load += new System.EventHandler(this.Consulta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbconsulta;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox cbxListado;
+        private System.Windows.Forms.DataGridView dgvShow;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
     }
