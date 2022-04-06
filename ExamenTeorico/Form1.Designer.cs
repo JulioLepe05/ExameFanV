@@ -37,7 +37,10 @@ namespace ExamenTeorico
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelPrincipal = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtIP = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelPrincipal.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConsulta
@@ -113,12 +116,30 @@ namespace ExamenTeorico
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.txtIP);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(924, 539);
+            this.groupBox1.Size = new System.Drawing.Size(941, 539);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Inicio de sesión";
+            // 
+            // txtIP
+            // 
+            this.txtIP.Location = new System.Drawing.Point(357, 259);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(202, 20);
+            this.txtIP.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(357, 286);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(202, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Guardar IP";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -137,6 +158,8 @@ namespace ExamenTeorico
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelPrincipal.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -149,6 +172,8 @@ namespace ExamenTeorico
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.FlowLayoutPanel panelPrincipal;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtIP;
     }
 }
 

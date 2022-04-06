@@ -13,6 +13,7 @@ namespace ExamenTeorico
     public partial class Form1 : Form
     {
         string x;
+        public string ip;
         
         public Form1()
         {
@@ -69,6 +70,11 @@ namespace ExamenTeorico
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ip = txtIP.Text;
         }
     }
 

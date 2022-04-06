@@ -138,7 +138,7 @@ namespace ExamenTeorico
                 try
                 {
                     attempts++;
-                    ClientSocket.Connect(IPAddress.Loopback, PORT);
+                    ClientSocket.Connect(ip, PORT);
                 }
                 catch (SocketException)
                 {
