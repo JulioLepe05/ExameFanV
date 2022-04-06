@@ -36,6 +36,8 @@ namespace ExamenTeorico
             this.button5 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelPrincipal = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panelPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConsulta
@@ -101,12 +103,22 @@ namespace ExamenTeorico
             // panelPrincipal
             // 
             this.panelPrincipal.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.panelPrincipal.Controls.Add(this.groupBox1);
             this.panelPrincipal.Cursor = System.Windows.Forms.Cursors.Default;
             this.panelPrincipal.Location = new System.Drawing.Point(331, 1);
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(944, 542);
             this.panelPrincipal.TabIndex = 43;
             this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPrincipal_Paint);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(924, 539);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Inicio de sesión";
             // 
             // Form1
             // 
@@ -124,6 +136,7 @@ namespace ExamenTeorico
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panelPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -135,6 +148,7 @@ namespace ExamenTeorico
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.FlowLayoutPanel panelPrincipal;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
