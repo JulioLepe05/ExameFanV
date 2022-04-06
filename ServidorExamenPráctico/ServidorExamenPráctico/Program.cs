@@ -32,7 +32,8 @@ namespace ServidorExamenPráctico
         private static void SetupServer()
         {
             Console.WriteLine("Setting up server...");
-            serverSocket.Bind(new IPEndPoint(IPAddress.Any, PORT));
+            var seggs= "10.221.106.162";
+            serverSocket.Bind(new IPEndPoint(IPAddress.Parse(seggs), PORT));
             serverSocket.Listen(0);
             serverSocket.BeginAccept(AcceptCallback, null);
             Console.WriteLine("Server setup complete");

@@ -29,93 +29,130 @@ namespace ExamenTeorico
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnConsulta;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.Button button5;
+            System.Windows.Forms.Button btnNuevo;
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btnConsulta = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.FlowLayoutPanel();
+            btnConsulta = new System.Windows.Forms.Button();
+            button5 = new System.Windows.Forms.Button();
+            btnNuevo = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConsulta
             // 
-            this.btnConsulta.BackColor = System.Drawing.Color.Black;
-            this.btnConsulta.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsulta.ForeColor = System.Drawing.Color.White;
-            this.btnConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnConsulta.Image")));
-            this.btnConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsulta.Location = new System.Drawing.Point(13, 13);
-            this.btnConsulta.Name = "btnConsulta";
-            this.btnConsulta.Size = new System.Drawing.Size(312, 162);
-            this.btnConsulta.TabIndex = 39;
-            this.btnConsulta.Text = "CONSULTA     ";
-            this.btnConsulta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConsulta.UseVisualStyleBackColor = false;
-            this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackColor = System.Drawing.Color.Black;
-            this.btnNuevo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
-            this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(13, 190);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(312, 162);
-            this.btnNuevo.TabIndex = 40;
-            this.btnNuevo.Text = "AGREGAR       ";
-            this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            btnConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(40)))), ((int)(((byte)(54)))));
+            btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnConsulta.ForeColor = System.Drawing.Color.White;
+            btnConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnConsulta.Image")));
+            btnConsulta.Location = new System.Drawing.Point(100, 277);
+            btnConsulta.Margin = new System.Windows.Forms.Padding(100, 3, 3, 3);
+            btnConsulta.Name = "btnConsulta";
+            btnConsulta.Size = new System.Drawing.Size(139, 125);
+            btnConsulta.TabIndex = 39;
+            btnConsulta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnConsulta.UseVisualStyleBackColor = false;
+            btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.Black;
-            this.button5.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(13, 369);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(311, 162);
-            this.button5.TabIndex = 41;
-            this.button5.Text = "SALIR              ";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            button5.AllowDrop = true;
+            button5.AutoEllipsis = true;
+            button5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(40)))), ((int)(((byte)(54)))));
+            button5.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button5.ForeColor = System.Drawing.Color.White;
+            button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            button5.Location = new System.Drawing.Point(3, 408);
+            button5.Name = "button5";
+            button5.Size = new System.Drawing.Size(139, 132);
+            button5.TabIndex = 41;
+            button5.TabStop = false;
+            button5.UseMnemonic = false;
+            button5.UseVisualStyleBackColor = false;
+            button5.UseWaitCursor = true;
+            button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Blue;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 1);
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(40)))), ((int)(((byte)(54)))));
+            this.flowLayoutPanel1.Controls.Add(button5);
+            this.flowLayoutPanel1.Controls.Add(btnConsulta);
+            this.flowLayoutPanel1.Controls.Add(btnNuevo);
+            this.flowLayoutPanel1.Controls.Add(this.label1);
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(339, 541);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(325, 543);
             this.flowLayoutPanel1.TabIndex = 42;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(3, 98);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(319, 20);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "--------------------------------------------------------------";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(93, 83);
+            this.pictureBox1.TabIndex = 43;
+            this.pictureBox1.TabStop = false;
             // 
             // panelPrincipal
             // 
             this.panelPrincipal.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.panelPrincipal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panelPrincipal.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelPrincipal.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.panelPrincipal.Location = new System.Drawing.Point(331, 1);
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(944, 542);
             this.panelPrincipal.TabIndex = 43;
-            this.panelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPrincipal_Paint);
+            this.panelPrincipal.UseWaitCursor = true;
+            // 
+            // btnNuevo
+            // 
+            btnNuevo.AllowDrop = true;
+            btnNuevo.AutoEllipsis = true;
+            btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(40)))), ((int)(((byte)(54)))));
+            btnNuevo.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnNuevo.ForeColor = System.Drawing.Color.White;
+            btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
+            btnNuevo.Location = new System.Drawing.Point(100, 131);
+            btnNuevo.Margin = new System.Windows.Forms.Padding(100, 3, 3, 3);
+            btnNuevo.Name = "btnNuevo";
+            btnNuevo.Size = new System.Drawing.Size(139, 140);
+            btnNuevo.TabIndex = 40;
+            btnNuevo.TabStop = false;
+            btnNuevo.UseMnemonic = false;
+            btnNuevo.UseVisualStyleBackColor = false;
+            btnNuevo.UseWaitCursor = true;
+            btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 543);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.btnConsulta);
+            this.ControlBox = false;
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panelPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -124,17 +161,19 @@ namespace ExamenTeorico
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button btnConsulta;
-        private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.FlowLayoutPanel panelPrincipal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

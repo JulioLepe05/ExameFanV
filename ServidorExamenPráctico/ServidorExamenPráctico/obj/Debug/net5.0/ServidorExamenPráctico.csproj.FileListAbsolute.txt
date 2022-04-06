@@ -14,3 +14,19 @@ C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\Serv
 C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ref\ServidorExamenPráctico.dll
 C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.pdb
 C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.genruntimeconfig.cache
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.exe
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.deps.json
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.runtimeconfig.json
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.runtimeconfig.dev.json
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.dll
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.pdb
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.csproj.AssemblyReference.cache
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.AssemblyInfoInputs.cache
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.AssemblyInfo.cs
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.csproj.CoreCompileInputs.cache
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.dll
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\refint\ServidorExamenPráctico.dll
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.pdb
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.genruntimeconfig.cache
+C:\Users\julio\source\repos\ExameFanV\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ref\ServidorExamenPráctico.dll
