@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ServidorExamenPráctico/1.0.0": {
+        "runtime": {
+          "ServidorExamenPráctico.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ServidorExamenPráctico/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

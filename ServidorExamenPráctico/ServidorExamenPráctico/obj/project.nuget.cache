@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "bPE/0XqTmPCDXfS6Uq77vfVTba/2cpDuMpInCg7Ycq8lUImRvcUSXHLa72XxcKIZi+jXpMkj5X+yJR8S/qURnw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Aron Aguilar\\Desktop\\Tareas\\ExamenPractico\\ServidorExamenPráctico\\ServidorExamenPráctico\\ServidorExamenPráctico.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Aron Aguilar\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}

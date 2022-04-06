@@ -1,0 +1,16 @@
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.exe
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.deps.json
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.runtimeconfig.json
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.runtimeconfig.dev.json
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.dll
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ref\ServidorExamenPráctico.dll
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\bin\Debug\net5.0\ServidorExamenPráctico.pdb
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.csproj.AssemblyReference.cache
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.AssemblyInfoInputs.cache
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.AssemblyInfo.cs
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.csproj.CoreCompileInputs.cache
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.dll
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ref\ServidorExamenPráctico.dll
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.pdb
+C:\Users\Aron Aguilar\Desktop\Tareas\ExamenPractico\ServidorExamenPráctico\ServidorExamenPráctico\obj\Debug\net5.0\ServidorExamenPráctico.genruntimeconfig.cache
