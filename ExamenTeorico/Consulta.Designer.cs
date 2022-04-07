@@ -106,7 +106,7 @@ namespace ExamenTeorico
             // 
             // Main
             // 
-            this.Main.HeaderText = "Main de LoL";
+            this.Main.HeaderText = "Apellidos";
             this.Main.Name = "Main";
             this.Main.ReadOnly = true;
             // 
