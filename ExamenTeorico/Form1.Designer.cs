@@ -37,8 +37,8 @@ namespace ExamenTeorico
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelPrincipal = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtIP = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtIP = new System.Windows.Forms.TextBox();
             this.panelPrincipal.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +47,7 @@ namespace ExamenTeorico
             // 
             this.btnConsulta.BackColor = System.Drawing.Color.Black;
             this.btnConsulta.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.btnConsulta.Enabled = false;
             this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsulta.ForeColor = System.Drawing.Color.White;
@@ -65,6 +66,7 @@ namespace ExamenTeorico
             // 
             this.btnNuevo.BackColor = System.Drawing.Color.Black;
             this.btnNuevo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.btnNuevo.Enabled = false;
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo.Image")));
@@ -124,13 +126,6 @@ namespace ExamenTeorico
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // txtIP
-            // 
-            this.txtIP.Location = new System.Drawing.Point(357, 259);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(202, 20);
-            this.txtIP.TabIndex = 0;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(357, 286);
@@ -140,6 +135,13 @@ namespace ExamenTeorico
             this.button1.Text = "Guardar IP";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtIP
+            // 
+            this.txtIP.Location = new System.Drawing.Point(357, 259);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(202, 20);
+            this.txtIP.TabIndex = 0;
             // 
             // Form1
             // 

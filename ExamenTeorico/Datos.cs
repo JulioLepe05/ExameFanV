@@ -21,6 +21,7 @@ namespace ExamenTeorico
         private const int PORT = 100;//creamos una constante que utilizamos como puerto
 
         string datos;
+        string ip2;
 
 
         private void txtedad_KeyPress(object sender, KeyPressEventArgs e)
@@ -94,11 +95,10 @@ namespace ExamenTeorico
             txtCivil.Clear();
         }
 
-        public Datos(List<string> lista)//pasamos una lista 
+        public Datos(string ip, List<string> lista)//pasamos una lista 
         {
             InitializeComponent();
-            Thread thread1 = new Thread(iniciar);//crea una instancia llamada hilo
-            thread1.Start();//iniciamos el hilo
+            ip2 = ip;//ip2 es la ip que cargamos de un lado a otro, le damos un scope global para quitarnos de problemas.
 
 
             if (lista != null)//si esta lista no está vacia, tomamos cada uno de los datos y se lo asignamos a cada textBox
@@ -123,11 +123,11 @@ namespace ExamenTeorico
 
         public void iniciar()
         {
-            ConnectToServer();//la conexion al servidor
+            ConnectToServer(ip2);//la conexion al servidor
             RequestLoop();//matenemos el servidor en escucha
 
         }
-        private static void ConnectToServer()//metodo de conexion
+        private static void ConnectToServer(string ip)//metodo de conexion
         {
             int attempts = 0;//iniciamos una variable attemps que sea igual a 0
 
@@ -136,7 +136,7 @@ namespace ExamenTeorico
                 try
                 {
                     attempts++;//intentamos conectarlo al servidor
-                    ClientSocket.Connect(IPAddress.Loopback, PORT);//pasamos la ip del servidor y el puerto
+                    ClientSocket.Connect(ip, PORT);//pasamos la ip del servidor y el puerto
                     //IPaddress junto con el loopback serian equivalente al localhost
                 }
                 catch (SocketException)
@@ -162,7 +162,6 @@ namespace ExamenTeorico
             SendString("exit"); //mandamos un string de exit
             ClientSocket.Shutdown(SocketShutdown.Both);//apagamos el socket
             ClientSocket.Close();
-            Environment.Exit(0);
         }
 
         private static void SendRequest(string query)
@@ -228,10 +227,6 @@ namespace ExamenTeorico
 
             if (btnNuevo.Text == "Guardar")
             {
-                
-
-
-
 
                     if (txtNombre.Text == "" || txtNombre.Text.Contains("%"))//estas condiciones se encargan de validar que ningun campo este vacio
                     {
@@ -368,7 +363,10 @@ namespace ExamenTeorico
                                                                             datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGenero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
 
                                                                             MessageBox.Show("Datos Guardados con Exito","Aviso del Sistema",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                                                            SendRequest(datos);//enviamos la cadena de texto con todos los datos, por medio de este metodo
+                                                                        Thread thread1 = new Thread(iniciar);//Creamos un hilo que ejecute el método iniciar, el cual es basciamente la conexión, esto es para que, tal y como en Java, no se congele el form.
+                                                                        thread1.Start();//iniciamos el hilo
+                                                                        SendRequest(datos);//enviamos la cadena de texto con todos los datos, por medio de este metodo
+                                                                        SendRequest("exit");//cerramos el socket.
                                                                         }
                                                                     }
                                                                 }

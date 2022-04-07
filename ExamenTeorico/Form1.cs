@@ -28,8 +28,8 @@ namespace ExamenTeorico
             this.panelPrincipal.Controls.Clear();//limpia el panel
 
 
-            Datos Frm = new Datos(null);//creamos una nueva instancia donde llamamos el frame datos
-            Frm.TopLevel = false;
+            Datos Frm = new Datos(ip, null);//creamos una nueva instancia donde llamamos el frame datos
+            Frm.TopLevel = false;//Profundidad del frame.
             panelPrincipal.Controls.Add(Frm);//añadimos lo que queremos al panel del frame
             Frm.Show();//mostramos el frame de datos
 
@@ -39,14 +39,14 @@ namespace ExamenTeorico
 
         public void panelPrincipal_Paint( object sender, PaintEventArgs e)
         {
-
+            //Este evento para que lo hicieron? @lepe @Doni?
         }
        
         private void btnConsulta_Click(object sender, EventArgs e)//codigo del boton consultar
         {
             this.panelPrincipal.Controls.Clear();//limpiamos el panel
 
-            Consulta frmconsulta = new Consulta(x, this.panelPrincipal);//creamos una instancia para llamar el frame de consulta
+            Consulta frmconsulta = new Consulta(ip,x, this.panelPrincipal);//creamos una instancia para llamar el frame de consulta
             frmconsulta.TopLevel = false;
             panelPrincipal.Controls.Add(frmconsulta);//añadimos lo que queramos al panel
             frmconsulta.Show();//lo mostramos
@@ -65,6 +65,7 @@ namespace ExamenTeorico
         private void button1_Click(object sender, EventArgs e)
         {
             ip = txtIP.Text;
+            
         }
     }
 
