@@ -391,11 +391,6 @@ namespace ExamenTeorico
             
             btnNuevo.Text = "Guardar"; //Cambia el texto del boton "Nuevo" a "Guardar"
 
-
-
-            
-
-            Consulta frmConsulta = new Consulta(datos);
             
         }
 

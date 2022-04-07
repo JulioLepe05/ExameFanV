@@ -26,7 +26,8 @@ namespace ExamenTeorico
         public Consulta(string datos)//constructor con datos nomás, ni idea de porque sigue aquí porque el código jamas entra por aquí o_0, 
         {
             InitializeComponent();
-            
+            SendRequest("$Comando$%ActualizarCB");
+
         }
         public void iniciar()//creamos un metodo iniciar
         {
@@ -124,11 +125,13 @@ namespace ExamenTeorico
                     switch (conceptos[1])
                     {
                         case "COMBOBOX":
+                            cb.Invoke((MethodInvoker)(() => cb.SelectionLength=0));
+                            cb.Invoke((MethodInvoker)(() => cb.Items.Clear()));
                             for (int i = 2; i < conceptos.Length - 1; i++)//se hace un ciclo donde tomamos la longitud del array
                                //y donde añadimos los datos al combobox
                             {
                                 //aqui añadimos al combobox los items que guardamos de la lista conceptos
-                                cb.Invoke((MethodInvoker)(() => cb.Items.Clear()));
+                                
                                 cb.Invoke((MethodInvoker)(() => cb.Items.Add(conceptos[i])));
                             }
                             break;
@@ -210,7 +213,9 @@ namespace ExamenTeorico
             dgvShow.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//formato a la tabla para que las columnas se muestren machin
             dgv4Cols.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//formato a la tabla para que las columnas se muestren machin
             panel = p;
+
         }
+
 
 
 
@@ -322,6 +327,7 @@ namespace ExamenTeorico
                         //Frm.Show();
 
                         Frm.btnNuevo.Text = "Modificar";//cambiamos el nombre del boton
+                        this.Close();//escondemos este frame
                     }
                 }
                 else if (dialogResult == DialogResult.No)
@@ -346,6 +352,18 @@ namespace ExamenTeorico
 
                 }
             }
+        }
+
+        //Actualizamos en estos eventos por si pudiera darse el caso de una perdida de paquetes o desincronización por el internet.
+
+        private void cbxListado_MouseClick(object sender, MouseEventArgs e)
+        {
+            SendRequest("$Comando$%ActualizarCB");
+        }
+
+        private void cbxListado_DropDown(object sender, EventArgs e)
+        {
+            SendRequest("$Comando$%ActualizarCB");
         }
     }
     

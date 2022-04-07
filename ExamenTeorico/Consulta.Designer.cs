@@ -49,7 +49,9 @@ namespace ExamenTeorico
             this.cbxListado.Name = "cbxListado";
             this.cbxListado.Size = new System.Drawing.Size(789, 21);
             this.cbxListado.TabIndex = 0;
+            this.cbxListado.DropDown += new System.EventHandler(this.cbxListado_DropDown);
             this.cbxListado.SelectedIndexChanged += new System.EventHandler(this.cbxListado_SelectedIndexChanged);
+            this.cbxListado.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbxListado_MouseClick);
             // 
             // dgvShow
             // 

@@ -134,7 +134,6 @@ namespace ServidorExamenPráctico
                             var archivoALeer = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\{conceptos[2]}";
                             var datosConComando = $"BROADCAST$DatosTXT$%{leerTXT(archivoALeer)}";
                             byte[] datosTXT = Encoding.UTF8.GetBytes(datosConComando);
-
                             current.Send(datosTXT);
                             break;
                         case "Eliminar":
@@ -222,8 +221,12 @@ namespace ServidorExamenPráctico
                                 File.WriteAllText($@"{director}{conceptos[3]}.txt", sb.ToString(), Encoding.UTF8);//Mandamos a crear el archivo.
                                 Console.WriteLine($@"Guardado satisfactoriamente en: {director} como {conceptos[3]}.txt");
                             };
-                            byte[] data2 = Encoding.UTF8.GetBytes("Escritura realizada satisfactoriamente");//Mensaje de exito.
-                            current.Send(data2);
+                            byte[] data2 = Encoding.UTF8.GetBytes("BROADCAST$ActualizarCB$%");//Mensaje de exito.
+                            foreach (object sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
+                            {
+                                Socket clienteEnTurno = (Socket)sok;
+                                clienteEnTurno.Send(data2);
+                            }
                             break;
                         default:
                             break;
