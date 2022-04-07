@@ -25,6 +25,7 @@ namespace serverForm
             InitializeComponent();
             Thread thread1 = new Thread(SetupServer);//Creamos un hilo que ejecute el método iniciar, el cual es basciamente la conexión, esto es para que, tal y como en Java, no se congele el form.
             thread1.Start();//iniciamos el hilo
+            actualizarTabla();
         }
         private void SetupServer()
         {
@@ -38,7 +39,7 @@ namespace serverForm
         /// <summary>
         /// Cerramos todos los clientes
         /// </summary>
-        
+
 
         private void AcceptCallback(IAsyncResult AR)
         {
@@ -222,8 +223,67 @@ namespace serverForm
             }
             return datos[0];
         }
+        private void actualizarTabla()
+        {
+            var director = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\";
+            List<string> datos = new List<string>();
 
+            foreach (string txtName in Directory.GetFiles(director, "*.txt"))
+            {
+                using (StreamReader sr = new StreamReader(txtName))
+                {
+                    string linea = string.Empty;
+                    while ((linea = sr.ReadLine()) != null)
+                    {
+                        datos.Add(linea);
+                    }
 
+                }
+
+            }
+            using (DataTable dtT = new DataTable())//creamos una instancia para usar la tabla
+            {
+                //añadimos la columnas con su respectivo nombre
+                dtT.Columns.Add("Código");
+                dtT.Columns.Add("Nombre");
+                dtT.Columns.Add("Apellido");
+                dtT.Columns.Add("Edad");
+                dtT.Columns.Add("Nacionalidad");
+                dtT.Columns.Add("Genero");
+                dtT.Columns.Add("Ciudad");
+                dtT.Columns.Add("Estado");
+                dtT.Columns.Add("Universidad");
+                dtT.Columns.Add("Carrera");
+                dtT.Columns.Add("Semestre");
+                dtT.Columns.Add("Deporte favorito");
+                dtT.Columns.Add("Main de LoL");
+                dtT.Columns.Add("Jugador Favorito de fulvo");
+                dtT.Columns.Add("Estado civil");
+
+                for (int i = 0; i < datos.Count; i++)
+                {
+
+                    string[] conceptos = datos[i].ToString().Split('%');
+                    dtT.Rows.Add(
+                    conceptos[0],
+                        conceptos[1],
+                    conceptos[2],
+                    conceptos[3],
+                    conceptos[4],
+                    conceptos[5],
+                    conceptos[6],
+                    conceptos[7],
+                    conceptos[8],
+                    conceptos[9],
+                    conceptos[10],
+                    conceptos[11],
+                    conceptos[12],
+                    conceptos[13],
+                    conceptos[14]);
+                }
+            }
+
+        }
     }
 }
 
