@@ -128,6 +128,7 @@ namespace ExamenTeorico
                                //y donde añadimos los datos al combobox
                             {
                                 //aqui añadimos al combobox los items que guardamos de la lista conceptos
+                                cb.Invoke((MethodInvoker)(() => cb.Items.Clear()));
                                 cb.Invoke((MethodInvoker)(() => cb.Items.Add(conceptos[i])));
                             }
                             break;
@@ -219,67 +220,67 @@ namespace ExamenTeorico
         }
 
         
-        public void btnModificar_Click(object sender, EventArgs e)//evento del boton modificar al hacerle click
-        {
-            DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                if (!dgvShow.RowCount.Equals(0))
-                {
-                    var list = new List<string>(15);//variable lista con un array de 15 elemento
-                    for (int i = 0; i < 15; i++)
-                    {
-                        //toma todos los valores de la tabla y los mete a una lista lista
-                        list.Add(dgvShow.Rows[0].Cells[i].Value.ToString());
-                    }
+        //public void btnModificar_Click(object sender, EventArgs e)//evento del boton modificar al hacerle click
+        //{
+        //    DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
+        //    if (dialogResult == DialogResult.Yes)
+        //    {
+        //        if (!dgvShow.RowCount.Equals(0))
+        //        {
+        //            var list = new List<string>(15);//variable lista con un array de 15 elemento
+        //            for (int i = 0; i < 15; i++)
+        //            {
+        //                //toma todos los valores de la tabla y los mete a una lista lista
+        //                list.Add(dgvShow.Rows[0].Cells[i].Value.ToString());
+        //            }
 
 
-                    //cambiamos entre paneles, entre el panel de consulta y el de datos
-                    this.Hide();//escondemos este frame
-                    panel.Controls.Clear();//limpiamos el panel
-                    Datos Frm = new Datos(ip2, list);//creamos una nueva instancia de la clase datos donde le pasamos la lista que acabamos de crear en el ciclo anterior
-                    Frm.TopLevel = false;
-                    panel.Controls.Add(Frm);//añadimos el frame al panel
-                    Frm.Show();//lo mostramos
+        //            //cambiamos entre paneles, entre el panel de consulta y el de datos
+        //            this.Hide();//escondemos este frame
+        //            panel.Controls.Clear();//limpiamos el panel
+        //            Datos Frm = new Datos(ip2, list);//creamos una nueva instancia de la clase datos donde le pasamos la lista que acabamos de crear en el ciclo anterior
+        //            Frm.TopLevel = false;
+        //            panel.Controls.Add(Frm);//añadimos el frame al panel
+        //            Frm.Show();//lo mostramos
 
-                    //Form1 frm = new Form1();
-                    //this.Hide();
-                    ////Frm.TopLevel = false;
-                    ////Frm.TopLevel = false;
-                    ////frm.panelPrincipal.Controls.Add();
-                    //Frm.Show();
+        //            //Form1 frm = new Form1();
+        //            //this.Hide();
+        //            ////Frm.TopLevel = false;
+        //            ////Frm.TopLevel = false;
+        //            ////frm.panelPrincipal.Controls.Add();
+        //            //Frm.Show();
 
-                    Frm.btnNuevo.Text = "Modificar";//cambiamos el nombre del boton
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
+        //            Frm.btnNuevo.Text = "Modificar";//cambiamos el nombre del boton
+        //        }
+        //    }
+        //    else if (dialogResult == DialogResult.No)
+        //    {
                 
-            }
+        //    }
             
             
 
 
-        }
+        //}
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                if (!dgvShow.RowCount.Equals(0))
-                {
-                    dgv4Cols.Rows.Clear();
-                    SendRequest($"$Comando$%Eliminar%{cbxListado.SelectedItem.ToString()}");
-                }
-                cbxListado.Items.Clear();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
+        //private void btnEliminar_Click(object sender, EventArgs e)
+        //{
+        //    DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
+        //    if (dialogResult == DialogResult.Yes)
+        //    {
+        //        if (!dgvShow.RowCount.Equals(0))
+        //        {
+        //            dgv4Cols.Rows.Clear();
+        //            SendRequest($"$Comando$%Eliminar%{cbxListado.SelectedItem.ToString()}");
+        //        }
+        //        cbxListado.Items.Clear();
+        //    }
+        //    else if (dialogResult == DialogResult.No)
+        //    {
 
-            }
+        //    }
 
-        }
+        //}
 
         private void cbxListado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -290,21 +291,21 @@ namespace ExamenTeorico
 
         private void dgv4Cols_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex==4 && e.RowIndex==0)
+            if (e.ColumnIndex==4 && e.RowIndex==0)//modificar
             {
                 DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    if (!dgvShow.RowCount.Equals(0))
+                    if (!dgvShow.RowCount.Equals(0))//solo si la tabla no esta vacia
                     {
-                        var list = new List<string>(15);//variable lista con un array de 15 elemento
+                        var list = new List<string>(15);//variable lista con un array de 15 elementos
                         for (int i = 0; i < 15; i++)
                         {
                             //toma todos los valores de la tabla y los mete a una lista lista
                             list.Add(dgvShow.Rows[0].Cells[i].Value.ToString());
                         }
 
-
+                        SendRequest($"$Comando$%Bloquear%{cbxListado.SelectedItem.ToString()}");
                         //cambiamos entre paneles, entre el panel de consulta y el de datos
                         this.Hide();//escondemos este frame
                         panel.Controls.Clear();//limpiamos el panel
@@ -328,7 +329,7 @@ namespace ExamenTeorico
 
                 }
             }
-            else if (e.ColumnIndex == 5 && e.RowIndex == 0)
+            else if (e.ColumnIndex == 5 && e.RowIndex == 0)//Borrar
             {
                 DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)

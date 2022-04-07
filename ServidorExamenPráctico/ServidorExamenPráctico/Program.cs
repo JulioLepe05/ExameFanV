@@ -18,7 +18,7 @@ namespace ServidorExamenPráctico
         private const int PORT = 100;//puerto
         private static readonly byte[] buffer = new byte[BUFFER_SIZE];//esta variable se crea para los mensajes
 
-        private List<string> archivosBloqueados = new List<string>();
+        private static readonly List<string> archivosBloqueados = new List<string>();
 
 
         static void Main()//constructor
@@ -109,25 +109,33 @@ namespace ServidorExamenPráctico
                     {
                         case "ActualizarCB":
                             var directorio = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\";//Ruta donde guardamos los archivos.
-                            string[] allfiles = Directory.GetFiles(directorio, "*.*", SearchOption.AllDirectories);//Obtenemos todos los archivos guardados.
+                            string[] allfiles = Directory.GetFiles(directorio, "*.txt", SearchOption.AllDirectories);//Obtenemos todos los archivos guardados.
+
                             string cadenaItems = "";
                             foreach (var item in allfiles)
                             {
-                                cadenaItems = $"{Path.GetFileName(item)}${cadenaItems}";//Le damos el formato archivo.txt% a la cadena con la información para que se ajuste a nuestro sistema.
+                                if (!archivosBloqueados.Contains(Path.GetFileName(item)))
+                                {
+                                    cadenaItems = $"{Path.GetFileName(item)}${cadenaItems}";//Le damos el formato archivo.txt% a la cadena con la información para que se ajuste a nuestro sistema.
+                                }
+                                
                             }
                             string itemsCB = $"BROADCAST$COMBOBOX${cadenaItems}";//Este es el mensaje que finalmente enviaremos a los clientes.
                             byte[] Items = Encoding.UTF8.GetBytes(itemsCB);
-                            current.Send(Items);
+
+                            foreach (object sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
+                            {
+                                Socket clienteEnTurno = (Socket)sok;
+                                
+                                clienteEnTurno.Send(Items);
+                            }
                             break;
                         case "datosDelTXT1":
                             var archivoALeer = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\{conceptos[2]}";
                             var datosConComando = $"BROADCAST$DatosTXT$%{leerTXT(archivoALeer)}";
                             byte[] datosTXT = Encoding.UTF8.GetBytes(datosConComando);
-                            foreach (object sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
-                            {
-                                Socket clienteEnTurno = (Socket)sok;
-                                clienteEnTurno.Send(datosTXT);
-                            }
+
+                            current.Send(datosTXT);
                             break;
                         case "Eliminar":
                             var archivoaBorrar = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\{conceptos[2]}";
@@ -138,6 +146,20 @@ namespace ServidorExamenPráctico
                                 Socket clienteEnTurno = (Socket)sok;
                                 clienteEnTurno.Send(mensajes);
                             }
+                            break;
+                        case "Bloquear":
+                            archivosBloqueados.Add(conceptos[2]);
+                            break;
+                        case "DesBloquear":
+                            try
+                            {
+                                archivosBloqueados.Remove(conceptos[2]);
+                            }
+                            catch (Exception)
+                            {
+                                break;
+                            }
+                            
                             break;
                         case "Escritura":
                             Console.WriteLine("Se va a escribir en el server");//si no traemos ningún comando entonces por defecto es una escritura.

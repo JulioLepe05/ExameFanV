@@ -59,7 +59,7 @@ namespace ExamenTeorico
         private void btncancelar_Click(object sender, EventArgs e)
         {
             
-            txtcodigo.Enabled = false; //desactiva el txt
+            //txtcodigo.Enabled = false; //desactiva el txt
             txtNombre.Enabled = false;
             txtapellidos.Enabled = false;
             txtedad.Enabled = false;
@@ -93,6 +93,7 @@ namespace ExamenTeorico
             txtmain.Clear();
             txtJugador.Clear();
             txtCivil.Clear();
+            SendRequest($"$Comando$%Desbloquear%{txtcodigo.Text}.txt");
         }
 
         public Datos(string ip, List<string> lista)//pasamos una lista 
@@ -204,7 +205,7 @@ namespace ExamenTeorico
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            txtcodigo.Enabled = true; //Activa el txt
+            //txtcodigo.Enabled = true; //Activa el txt
             txtNombre.Enabled = true; //Activa el txt
             txtapellidos.Enabled = true; //Activa el txt
             txtedad.Enabled = true; //Activa el txt
@@ -220,9 +221,8 @@ namespace ExamenTeorico
             txtJugador.Enabled = true; //Activa el txt
             txtCivil.Enabled = true; //Activa el txt
             
-            if (!txtcodigo.Equals("")) //condicion de si este campo de texto esta vacio o nulo
+            if (btnNuevo.Text=="Nuevo") //condicion de si este campo de texto esta vacio o nulo
             {
-
                 Random r = new Random();//generan un numero aleatorio de 6 digitos
                 txtcodigo.Text = r.Next(100000, 999999) + "";//dentro de este rango
             }
@@ -367,7 +367,8 @@ namespace ExamenTeorico
                                                                             MessageBox.Show("Datos Guardados con Exito","Aviso del Sistema",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                                         
                                                                         SendRequest(datos);//enviamos la cadena de texto con todos los datos, por medio de este metodo
-                                                                        }
+                                                                        SendRequest($"$Comando$%Desbloquear%{txtcodigo.Text}.txt");
+                                                                    }
                                                                     }
                                                                 }
 
@@ -398,261 +399,261 @@ namespace ExamenTeorico
             
         }
 
-        private void button1_Click(object sender, EventArgs e)//Boton MOdificar
-        {
+       // private void button1_Click(object sender, EventArgs e)//Boton MOdificar
+       // {
             
 
-            txtcodigo.Enabled = true; //Activa el txt
-            txtNombre.Enabled = true; //Activa el txt
-            txtapellidos.Enabled = true; //Activa el txt
-            txtedad.Enabled = true; //Activa el txt
-            txtnacionalidad.Enabled = true; //Activa el txt
-            txtGenero.Enabled = true; //Activa el txt
-            txtciudad.Enabled = true; //Activa el txt
-            txtestado.Enabled = true; //Activa el txt
-            txtuniversidad.Enabled = true; //Activa el txt
-            txtcarrera.Enabled = true; //Activa el txt
-            txtsemestre.Enabled = true; //Activa el txt
-            txtdeporte.Enabled = true; //Activa el txt
-            txtmain.Enabled = true; //Activa el txt
-            txtJugador.Enabled = true; //Activa el txt
-            txtCivil.Enabled = true; //Activa el txt
+       //     txtcodigo.Enabled = true; //Activa el txt
+       //     txtNombre.Enabled = true; //Activa el txt
+       //     txtapellidos.Enabled = true; //Activa el txt
+       //     txtedad.Enabled = true; //Activa el txt
+       //     txtnacionalidad.Enabled = true; //Activa el txt
+       //     txtGenero.Enabled = true; //Activa el txt
+       //     txtciudad.Enabled = true; //Activa el txt
+       //     txtestado.Enabled = true; //Activa el txt
+       //     txtuniversidad.Enabled = true; //Activa el txt
+       //     txtcarrera.Enabled = true; //Activa el txt
+       //     txtsemestre.Enabled = true; //Activa el txt
+       //     txtdeporte.Enabled = true; //Activa el txt
+       //     txtmain.Enabled = true; //Activa el txt
+       //     txtJugador.Enabled = true; //Activa el txt
+       //     txtCivil.Enabled = true; //Activa el txt
 
 
-            //btnModificar.Text = "Guardar";
+       //     //btnModificar.Text = "Guardar";
 
-            //if (btnModificar.Text == "Guardar")
-            //{
-
-
-
-            //    if (txtcodigo.Text.Length < 9)
-            //    {
-            //        MessageBox.Show("Ingrese un codigo con el formato correcto", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //        txtcodigo.Focus();
-            //        txtcodigo.SelectAll();
-            //    }
-            //    else if (txtcodigo.Text == "")
-            //    {
-            //        MessageBox.Show("Ingrese su Codigo", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //        txtcodigo.Focus();
-            //        txtcodigo.SelectAll();
-            //    }
-            //    else
-            //    {
-            //        // bool esNumero;
-            //        // esNumero = int.TryParse(txtcodigo.Text, out codigo);
-
-            //        if (txtNombre.Text == "")
-            //        {
-            //            MessageBox.Show("Ingrese su nombre", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //            txtNombre.Focus();
-            //            txtNombre.SelectAll();
-            //        }
-            //        else
-            //        {
-            //            // nombre = txtNombre.Text;
-
-            //            if (txtapellidos.Text == "")
-            //            {
-            //                MessageBox.Show("Ingrese sus Apellidos", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                txtapellidos.Focus();
-            //                txtapellidos.SelectAll();
-            //            }
-            //            else
-            //            {
-            //                //apellidos = txtapellidos.Text;
+       //     //if (btnModificar.Text == "Guardar")
+       //     //{
 
 
-            //                if (txtedad.Text == "")
-            //                {
-            //                    MessageBox.Show("Ingrese su edad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                    txtedad.Focus();
-            //                    txtedad.Select();
-            //                }
-            //                else
-            //                {
-            //                    // bool esnum;
-            //                    // esnum = int.TryParse(txtedad.Text, out edad);
+
+       //     //    if (txtcodigo.Text.Length < 9)
+       //     //    {
+       //     //        MessageBox.Show("Ingrese un codigo con el formato correcto", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //        txtcodigo.Focus();
+       //     //        txtcodigo.SelectAll();
+       //     //    }
+       //     //    else if (txtcodigo.Text == "")
+       //     //    {
+       //     //        MessageBox.Show("Ingrese su Codigo", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //        txtcodigo.Focus();
+       //     //        txtcodigo.SelectAll();
+       //     //    }
+       //     //    else
+       //     //    {
+       //     //        // bool esNumero;
+       //     //        // esNumero = int.TryParse(txtcodigo.Text, out codigo);
+
+       //     //        if (txtNombre.Text == "")
+       //     //        {
+       //     //            MessageBox.Show("Ingrese su nombre", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //            txtNombre.Focus();
+       //     //            txtNombre.SelectAll();
+       //     //        }
+       //     //        else
+       //     //        {
+       //     //            // nombre = txtNombre.Text;
+
+       //     //            if (txtapellidos.Text == "")
+       //     //            {
+       //     //                MessageBox.Show("Ingrese sus Apellidos", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                txtapellidos.Focus();
+       //     //                txtapellidos.SelectAll();
+       //     //            }
+       //     //            else
+       //     //            {
+       //     //                //apellidos = txtapellidos.Text;
 
 
-            //                    if (txtnacionalidad.Text == "")
-            //                    {
-            //                        MessageBox.Show("Ingrese su Nacionalidad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                        txtnacionalidad.Focus();
-            //                        txtnacionalidad.SelectAll();
-
-            //                    }
-            //                    else
-            //                    {
-            //                        //nacionalidad = txtnacionalidad.Text;
-
-            //                        if (txtGebero.Text == "")
-            //                        {
-            //                            MessageBox.Show("Ingrese su Genero", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                            txtGebero.Focus();
-            //                            txtGebero.SelectAll();
-            //                        }
-            //                        else
-            //                        {
-            //                            // genero = txtGebero.Text;
+       //     //                if (txtedad.Text == "")
+       //     //                {
+       //     //                    MessageBox.Show("Ingrese su edad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                    txtedad.Focus();
+       //     //                    txtedad.Select();
+       //     //                }
+       //     //                else
+       //     //                {
+       //     //                    // bool esnum;
+       //     //                    // esnum = int.TryParse(txtedad.Text, out edad);
 
 
-            //                            if (txtciudad.Text == "")
-            //                            {
-            //                                MessageBox.Show("Ingrese su ciudad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                txtciudad.Focus();
-            //                                txtciudad.SelectAll();
-            //                            }
-            //                            else
-            //                            {
-            //                                //ciudad = txtciudad.Text;
+       //     //                    if (txtnacionalidad.Text == "")
+       //     //                    {
+       //     //                        MessageBox.Show("Ingrese su Nacionalidad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                        txtnacionalidad.Focus();
+       //     //                        txtnacionalidad.SelectAll();
 
-            //                                if (txtestado.Text == "")
-            //                                {
-            //                                    MessageBox.Show("Ingrese su estado", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                    txtestado.Focus();
-            //                                    txtestado.SelectAll();
-            //                                }
-            //                                else
-            //                                {
-            //                                    //estado = txtestado.Text;
+       //     //                    }
+       //     //                    else
+       //     //                    {
+       //     //                        //nacionalidad = txtnacionalidad.Text;
 
-            //                                    if (txtuniversidad.Text == "")
-            //                                    {
-            //                                        MessageBox.Show("Ingrese su Universidad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                        txtuniversidad.Focus();
-            //                                        txtuniversidad.SelectAll();
-            //                                    }
-            //                                    else
-            //                                    {
-            //                                        //universidad = txtuniversidad.Text;
+       //     //                        if (txtGebero.Text == "")
+       //     //                        {
+       //     //                            MessageBox.Show("Ingrese su Genero", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                            txtGebero.Focus();
+       //     //                            txtGebero.SelectAll();
+       //     //                        }
+       //     //                        else
+       //     //                        {
+       //     //                            // genero = txtGebero.Text;
 
 
-            //                                        if (txtcarrera.Text == "")
-            //                                        {
-            //                                            MessageBox.Show("Ingrese su Carrera", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                            txtcarrera.Focus();
-            //                                            txtcarrera.SelectAll();
-            //                                        }
-            //                                        else
-            //                                        {
-            //                                            //carrera = txtcarrera.Text;
+       //     //                            if (txtciudad.Text == "")
+       //     //                            {
+       //     //                                MessageBox.Show("Ingrese su ciudad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                txtciudad.Focus();
+       //     //                                txtciudad.SelectAll();
+       //     //                            }
+       //     //                            else
+       //     //                            {
+       //     //                                //ciudad = txtciudad.Text;
 
-            //                                            if (txtsemestre.Text == "")
-            //                                            {
-            //                                                MessageBox.Show("Ingrese su Semestre", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                                txtsemestre.Focus();
-            //                                                txtsemestre.SelectAll();
-            //                                            }
-            //                                            else
-            //                                            {
-            //                                                //bool esNum;
-            //                                                //esNum = int.TryParse(txtsemestre.Text, out semestres);
+       //     //                                if (txtestado.Text == "")
+       //     //                                {
+       //     //                                    MessageBox.Show("Ingrese su estado", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                    txtestado.Focus();
+       //     //                                    txtestado.SelectAll();
+       //     //                                }
+       //     //                                else
+       //     //                                {
+       //     //                                    //estado = txtestado.Text;
 
-            //                                                if (txtdeporte.Text == "")
-            //                                                {
-            //                                                    MessageBox.Show("Ingrese su Deporte Favorito", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                                    txtdeporte.Focus();
-            //                                                    txtdeporte.SelectAll();
-            //                                                }
-            //                                                else
-            //                                                {
-            //                                                    // deporte = txtdeporte.Text;
-
-            //                                                    if (txtmain.Text == "")
-            //                                                    {
-            //                                                        MessageBox.Show("Ingrese su Main Favorito", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                                        txtmain.Focus();
-            //                                                        txtmain.SelectAll();
-            //                                                    }
-            //                                                    else
-            //                                                    {
-            //                                                        //main = txtmain.Text;
-
-            //                                                        if (txtJugador.Text == "")
-            //                                                        {
-            //                                                            MessageBox.Show("Ingrese su Jugador Favorito de futbol", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                                            txtJugador.Focus();
-            //                                                            txtJugador.SelectAll();
-            //                                                        }
-            //                                                        else
-            //                                                        {
-            //                                                            //jugador = txtJugador.Text;
-
-            //                                                            if (txtCivil.Text == "")
-            //                                                            {
-            //                                                                MessageBox.Show("Ingrese su Estado Civil", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //                                                                txtCivil.Focus();
-            //                                                                txtCivil.SelectAll();
-            //                                                            }
-            //                                                            else
-            //                                                            {
-            //                                                                //estadocivil = txtCivil.Text;
-            //                                                                datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGebero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil}";
-
-            //                                                                MessageBox.Show("Datos Modificados con Exito", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                    if (txtuniversidad.Text == "")
+       //     //                                    {
+       //     //                                        MessageBox.Show("Ingrese su Universidad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                        txtuniversidad.Focus();
+       //     //                                        txtuniversidad.SelectAll();
+       //     //                                    }
+       //     //                                    else
+       //     //                                    {
+       //     //                                        //universidad = txtuniversidad.Text;
 
 
-            //                                                            }
-            //                                                        }
-            //                                                    }
+       //     //                                        if (txtcarrera.Text == "")
+       //     //                                        {
+       //     //                                            MessageBox.Show("Ingrese su Carrera", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                            txtcarrera.Focus();
+       //     //                                            txtcarrera.SelectAll();
+       //     //                                        }
+       //     //                                        else
+       //     //                                        {
+       //     //                                            //carrera = txtcarrera.Text;
 
-            //                                                }
-            //                                            }
-            //                                        }
-            //                                    }
+       //     //                                            if (txtsemestre.Text == "")
+       //     //                                            {
+       //     //                                                MessageBox.Show("Ingrese su Semestre", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                                txtsemestre.Focus();
+       //     //                                                txtsemestre.SelectAll();
+       //     //                                            }
+       //     //                                            else
+       //     //                                            {
+       //     //                                                //bool esNum;
+       //     //                                                //esNum = int.TryParse(txtsemestre.Text, out semestres);
+
+       //     //                                                if (txtdeporte.Text == "")
+       //     //                                                {
+       //     //                                                    MessageBox.Show("Ingrese su Deporte Favorito", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                                    txtdeporte.Focus();
+       //     //                                                    txtdeporte.SelectAll();
+       //     //                                                }
+       //     //                                                else
+       //     //                                                {
+       //     //                                                    // deporte = txtdeporte.Text;
+
+       //     //                                                    if (txtmain.Text == "")
+       //     //                                                    {
+       //     //                                                        MessageBox.Show("Ingrese su Main Favorito", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                                        txtmain.Focus();
+       //     //                                                        txtmain.SelectAll();
+       //     //                                                    }
+       //     //                                                    else
+       //     //                                                    {
+       //     //                                                        //main = txtmain.Text;
+
+       //     //                                                        if (txtJugador.Text == "")
+       //     //                                                        {
+       //     //                                                            MessageBox.Show("Ingrese su Jugador Favorito de futbol", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                                            txtJugador.Focus();
+       //     //                                                            txtJugador.SelectAll();
+       //     //                                                        }
+       //     //                                                        else
+       //     //                                                        {
+       //     //                                                            //jugador = txtJugador.Text;
+
+       //     //                                                            if (txtCivil.Text == "")
+       //     //                                                            {
+       //     //                                                                MessageBox.Show("Ingrese su Estado Civil", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+       //     //                                                                txtCivil.Focus();
+       //     //                                                                txtCivil.SelectAll();
+       //     //                                                            }
+       //     //                                                            else
+       //     //                                                            {
+       //     //                                                                //estadocivil = txtCivil.Text;
+       //     //                                                                datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGebero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil}";
+
+       //     //                                                                MessageBox.Show("Datos Modificados con Exito", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
 
-            //                                }
-            //                            }
+       //     //                                                            }
+       //     //                                                        }
+       //     //                                                    }
 
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //        }
+       //     //                                                }
+       //     //                                            }
+       //     //                                        }
+       //     //                                    }
 
-            //    }
-            //}
-            //btnModificar.Text = "Guardar";            
+
+       //     //                                }
+       //     //                            }
+
+       //     //                        }
+       //     //                    }
+       //     //                }
+       //     //            }
+       //     //        }
+
+       //     //    }
+       //     //}
+       //     //btnModificar.Text = "Guardar";            
 
        
 
-       }
+       //}
 
        
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            //una variable llamada pregunta, donde sacamos un mensaje 
-            var pregunta= MessageBox.Show("¿Desea Eliminar los Datos?", "Aviso del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+        //private void btnEliminar_Click(object sender, EventArgs e)
+        //{
+        //    //una variable llamada pregunta, donde sacamos un mensaje 
+        //    var pregunta= MessageBox.Show("¿Desea Eliminar los Datos?", "Aviso del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             
-            //si pregunta es igual a la opcion seleccionada si
-            if (pregunta.Equals(DialogResult.Yes))
-            {
-                txtcodigo.Clear();//limpiamos los textBox
-                txtNombre.Clear();
-                txtapellidos.Clear();
-                txtedad.Clear();
-                txtnacionalidad.Clear();
-                txtGenero.Clear();
-                txtciudad.Clear();
-                txtestado.Clear();
-                txtuniversidad.Clear();
-                txtcarrera.Clear();
-                txtsemestre.Clear();
-                txtdeporte.Clear();
-                txtmain.Clear();
-                txtJugador.Clear();
-                txtCivil.Clear();
+        //    //si pregunta es igual a la opcion seleccionada si
+        //    if (pregunta.Equals(DialogResult.Yes))
+        //    {
+        //        txtcodigo.Clear();//limpiamos los textBox
+        //        txtNombre.Clear();
+        //        txtapellidos.Clear();
+        //        txtedad.Clear();
+        //        txtnacionalidad.Clear();
+        //        txtGenero.Clear();
+        //        txtciudad.Clear();
+        //        txtestado.Clear();
+        //        txtuniversidad.Clear();
+        //        txtcarrera.Clear();
+        //        txtsemestre.Clear();
+        //        txtdeporte.Clear();
+        //        txtmain.Clear();
+        //        txtJugador.Clear();
+        //        txtCivil.Clear();
 
-                //retacamos todo a la variable tipo string, siendo el caso que ya estaria vacio
-                datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGenero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
-            }
+        //        //retacamos todo a la variable tipo string, siendo el caso que ya estaria vacio
+        //        datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGenero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
+        //    }
             
 
-        }
+        //}
     }
             
 }
