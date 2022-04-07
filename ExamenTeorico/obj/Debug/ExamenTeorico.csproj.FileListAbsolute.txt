@@ -69,3 +69,15 @@ C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.cspr
 C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.CoreCompileInputs.cache
 C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.exe
 C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.pdb
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\bin\Debug\ExamenTeorico.exe.config
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\bin\Debug\ExamenTeorico.exe
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\bin\Debug\ExamenTeorico.pdb
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.AssemblyReference.cache
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.Consulta.resources
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.Datos.resources
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.Form1.resources
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.Properties.Resources.resources
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.GenerateResource.cache
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.CoreCompileInputs.cache
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.exe
+C:\Users\Aron Aguilar\Downloads\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.pdb

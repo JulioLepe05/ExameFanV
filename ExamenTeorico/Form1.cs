@@ -33,6 +33,9 @@ namespace ExamenTeorico
             panelPrincipal.Controls.Add(Frm);//añadimos lo que queremos al panel del frame
             Frm.Show();//mostramos el frame de datos
 
+            btnNuevo.Enabled = false;
+            btnConsulta.Enabled = true;
+
         }
 
         
@@ -50,6 +53,9 @@ namespace ExamenTeorico
             frmconsulta.TopLevel = false;
             panelPrincipal.Controls.Add(frmconsulta);//añadimos lo que queramos al panel
             frmconsulta.Show();//lo mostramos
+
+            btnConsulta.Enabled = false;
+            btnNuevo.Enabled = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -65,7 +71,8 @@ namespace ExamenTeorico
         private void button1_Click(object sender, EventArgs e)
         {
             ip = txtIP.Text;
-            
+            btnConsulta.Enabled = true;
+            btnNuevo.Enabled = true;
         }
     }
 

@@ -18,8 +18,8 @@ namespace ServidorExamenPráctico
         private const int PORT = 100;//puerto
         private static readonly byte[] buffer = new byte[BUFFER_SIZE];//esta variable se crea para los mensajes
 
-        
-        
+
+
 
         static void Main()//constructor
         {
@@ -27,7 +27,7 @@ namespace ServidorExamenPráctico
             SetupServer();
             Console.ReadLine(); // When we press enter close everything
             CloseAllSockets();
-            
+
         }
 
         private static void SetupServer()
@@ -123,11 +123,75 @@ namespace ServidorExamenPráctico
                             var archivoALeer = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\{conceptos[2]}";
                             var datosConComando = $"BROADCAST$DatosTXT$%{leerTXT(archivoALeer)}";
                             byte[] datosTXT = Encoding.UTF8.GetBytes(datosConComando);
-                            foreach (object  sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
+                            foreach (object sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
                             {
                                 Socket clienteEnTurno = (Socket)sok;
                                 clienteEnTurno.Send(datosTXT);
                             }
+                            break;
+                        case "Escritura":
+                            Console.WriteLine("Se va a escribir en el server");//si no traemos ningún comando entonces por defecto es una escritura.
+                            using (DataTable dtT = new DataTable())//Guardamos los datos en un datatable, este código ya lo teniamos, lo usamos Andoni y Aarón para otro proyecto, con este mismo código podemos generar archivos CSV con infinitas lineas, creando un 'DataTable' el cual es como un DataFrame en python o un modelo de tabla en java????? guarda la info pero nada más en forma de datos. Claro que para hacer este proyecto no utilizamos el código a su 100%.
+                            {
+                                //Añadimos las columnas del datatable, al final ni las vamos a usar pero bueno haha.
+                                dtT.Columns.Add("Código");
+                                dtT.Columns.Add("Nombre");
+                                dtT.Columns.Add("Apellido");
+                                dtT.Columns.Add("Edad");
+                                dtT.Columns.Add("Nacionalidad");
+                                dtT.Columns.Add("Genero");
+                                dtT.Columns.Add("Ciudad");
+                                dtT.Columns.Add("Estado");
+                                dtT.Columns.Add("Universidad");
+                                dtT.Columns.Add("Carrera");
+                                dtT.Columns.Add("Semestre");
+                                dtT.Columns.Add("Deporte favorito");
+                                dtT.Columns.Add("Main de LoL");
+                                dtT.Columns.Add("Jugador Favorito de fulvo");
+                                dtT.Columns.Add("Estado civil");
+                                string input = text;//Tomamos y hacemos split al mensaje original.
+                                string[] valores = input.Split('%');
+                                //Ahora traemos los datos que envio el cliente en un string separado por '%'
+                                dtT.Rows.Add(
+                                                valores[2],
+                                                valores[3],
+                                                valores[4],
+                                                valores[5],
+                                                valores[6],
+                                                valores[7],
+                                                valores[8],
+                                                valores[9],
+                                                valores[10],
+                                                valores[11],
+                                                valores[12],
+                                                valores[13],
+                                                valores[14],
+                                                valores[15],
+                                                valores[16]
+                                                );
+                                StringBuilder sb = new StringBuilder();//Literalmente el nombre lo dice, es un constructor de strings.
+
+                                //string[] columnNames = dtT.Columns.Cast<DataColumn>().
+                                //                                  Select(column => column.ColumnName).
+                                //                                  ToArray();
+                                //sb.AppendLine(string.Join("%", columnNames));
+
+                                //foreach (DataRow row in dtT.Rows)
+                                //{
+                                string[] fields = dtT.Rows[0].ItemArray.Select(field => field.ToString()).ToArray();//Objeto de celda en el datatable a string.
+                                sb.AppendLine(string.Join("%", fields));//Juntamos todo en una sola linea con el formato adecuado.
+                                                                        //}
+                                var director = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\";
+
+                                if (!Directory.Exists(director))//Si el directorio no existe lo crea.
+                                {
+                                    Directory.CreateDirectory(director);
+                                }
+                                File.WriteAllText($@"{director}{conceptos[3]}.txt", sb.ToString(), Encoding.UTF8);//Mandamos a crear el archivo.
+                                Console.WriteLine($@"Guardado satisfactoriamente en: {director} como {conceptos[3]}.txt");
+                            };
+                            byte[] data2 = Encoding.UTF8.GetBytes("Escritura realizada satisfactoriamente");//Mensaje de exito.
+                            current.Send(data2);
                             break;
                         default:
                             break;
@@ -141,69 +205,9 @@ namespace ServidorExamenPráctico
                     Console.WriteLine("Client disconnected");
                     return;
                     break;
+
                 default:
-                    Console.WriteLine("Se va a escribir en el server");//si no traemos ningún comando entonces por defecto es una escritura.
-                    using (DataTable dtT = new DataTable())//Guardamos los datos en un datatable, este código ya lo teniamos, lo usamos Andoni y Aarón para otro proyecto, con este mismo código podemos generar archivos CSV con infinitas lineas, creando un 'DataTable' el cual es como un DataFrame en python o un modelo de tabla en java????? guarda la info pero nada más en forma de datos. Claro que para hacer este proyecto no utilizamos el código a su 100%.
-                    {
-                        //Añadimos las columnas del datatable, al final ni las vamos a usar pero bueno haha.
-                        dtT.Columns.Add("Código");
-                        dtT.Columns.Add("Nombre");
-                        dtT.Columns.Add("Apellido");
-                        dtT.Columns.Add("Edad");
-                        dtT.Columns.Add("Nacionalidad");
-                        dtT.Columns.Add("Genero");
-                        dtT.Columns.Add("Ciudad");
-                        dtT.Columns.Add("Estado");
-                        dtT.Columns.Add("Universidad");
-                        dtT.Columns.Add("Carrera");
-                        dtT.Columns.Add("Semestre");
-                        dtT.Columns.Add("Deporte favorito");
-                        dtT.Columns.Add("Main de LoL");
-                        dtT.Columns.Add("Jugador Favorito de fulvo");
-                        dtT.Columns.Add("Estado civil");
-                        string input = text;//Tomamos y hacemos split al mensaje original.
-                        string[] valores = input.Split('%');
-                        //Ahora traemos los datos que envio el cliente en un string separado por '%'
-                        dtT.Rows.Add(
-                                        valores[0],
-                                        valores[1],
-                                        valores[2],
-                                        valores[3],
-                                        valores[4],
-                                        valores[5],
-                                        valores[6],
-                                        valores[7],
-                                        valores[8],
-                                        valores[9],
-                                        valores[10],
-                                        valores[11],
-                                        valores[12],
-                                        valores[13],
-                                        valores[14]
-                                        );
-                        StringBuilder sb = new StringBuilder();//Literalmente el nombre lo dice, es un constructor de strings.
-
-                        //string[] columnNames = dtT.Columns.Cast<DataColumn>().
-                        //                                  Select(column => column.ColumnName).
-                        //                                  ToArray();
-                        //sb.AppendLine(string.Join("%", columnNames));
-
-                        //foreach (DataRow row in dtT.Rows)
-                        //{
-                            string[] fields = dtT.Rows[0].ItemArray.Select(field => field.ToString()).ToArray();//Objeto de celda en el datatable a string.
-                            sb.AppendLine(string.Join("%", fields));//Juntamos todo en una sola linea con el formato adecuado.
-                        //}
-                        var directorio = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\";
-
-                        if (!Directory.Exists(directorio))//Si el directorio no existe lo crea.
-                        {
-                            Directory.CreateDirectory(directorio);
-                        }
-                        File.WriteAllText($@"{directorio}{conceptos[0]}.txt", sb.ToString(), Encoding.UTF8);//Mandamos a crear el archivo.
-                        Console.WriteLine($@"Guardado satisfactoriamente en: {directorio} como {conceptos[0]}.txt");
-                    };
-                    byte[] data2 = Encoding.UTF8.GetBytes("Escritura realizada satisfactoriamente");//Mensaje de exito.
-                    current.Send(data2);
+                    return;
                     break;
 
             }
