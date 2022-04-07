@@ -32,7 +32,7 @@ namespace ExamenTeorico
         {
             ConnectToServer();//donde mandamos llamaar el metodo para conectar al servidor
             SendRequest("$Comando$%ActualizarCB");//le estamos enviando un comando al servidor para que actualice el combo box y que muestre los archivos que tenmos guardados
-            RequestLoop(cbxListado, dgvShow);//loop para recibir las respuestas para el combo box y la tabla
+            RequestLoop(cbxListado, dgvShow,dgv4Cols);//loop para recibir las respuestas para el combo box y la tabla
 
         }
         private static void ConnectToServer()//creamos un metodo para conectarnos al servidor
@@ -58,14 +58,14 @@ namespace ExamenTeorico
             //Console.WriteLine("Connected");
         }
 
-        private static void RequestLoop(ComboBox cb, DataGridView dgvShow)//creamos un metodo para que siempre este recibiendo la informacion
+        private static void RequestLoop(ComboBox cb, DataGridView dgvShow, DataGridView dgv4cols)//creamos un metodo para que siempre este recibiendo la informacion
         {
             //Console.WriteLine(@"<Type ""exit"" to properly disconnect client>");
 
             while (true)
             {
                 //SendRequest();
-                ReceiveResponse(cb, dgvShow);
+                ReceiveResponse(cb, dgvShow, dgv4cols);
             }
         }
 
@@ -105,7 +105,7 @@ namespace ExamenTeorico
             ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None);//lo enviamos por el socket
         }
 
-        private static void ReceiveResponse(ComboBox cb, DataGridView dgvShow)//recibimos la respuesta que se ira al cb y al data grid
+        private static void ReceiveResponse(ComboBox cb, DataGridView dgvShow, DataGridView dgv4cols)//recibimos la respuesta que se ira al cb y al data grid
         {
             var buffer = new byte[2048];//creamos una variable tipo buffer y le asignamos un valor para su tamaño
             int received = ClientSocket.Receive(buffer, SocketFlags.None);//cantidad de bytes recibidos en el mensaje
@@ -173,8 +173,13 @@ namespace ExamenTeorico
 
                                 //entablamos los datos los datos
                                 dgvShow.Invoke((MethodInvoker)(() => dgvShow.DataSource = dtT));
+                                dgv4cols.Invoke((MethodInvoker)(() => dgv4cols.Rows.Add(
+                                    valores[1],
+                                    valores[2],
+                                    valores[3],
+                                    valores[4]
+                                    )));
 
-                                
 
                             };
                             //cerramos los casos y se detiene el switch
@@ -199,6 +204,7 @@ namespace ExamenTeorico
             Thread thread1 = new Thread(iniciar);//creamos un hilo para que corra una conexión y consulte los datos.
             thread1.Start();//lo iniciamos
             dgvShow.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//formato a la tabla para que las columnas se muestren machin
+            dgv4Cols.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//formato a la tabla para que las columnas se muestren machin
             panel = p;
         }
 

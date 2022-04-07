@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aron Aguilar\\Desktop\\Tareas\\ExameFanV\\ServidorExamenPráctico\\ServidorExamenPráctico\\ServidorExamenPráctico.csproj",
+      "projectUniqueName": "C:\\Users\\Aron Aguilar\\Downloads\\ExameFanV\\ServidorExamenPráctico\\ServidorExamenPráctico\\ServidorExamenPráctico.csproj",
       "projectName": "ServidorExamenPráctico",
-      "projectPath": "C:\\Users\\Aron Aguilar\\Desktop\\Tareas\\ExameFanV\\ServidorExamenPráctico\\ServidorExamenPráctico\\ServidorExamenPráctico.csproj",
+      "projectPath": "C:\\Users\\Aron Aguilar\\Downloads\\ExameFanV\\ServidorExamenPráctico\\ServidorExamenPráctico\\ServidorExamenPráctico.csproj",
       "packagesPath": "C:\\Users\\Aron Aguilar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aron Aguilar\\Desktop\\Tareas\\ExameFanV\\ServidorExamenPráctico\\ServidorExamenPráctico\\obj\\",
+      "outputPath": "C:\\Users\\Aron Aguilar\\Downloads\\ExameFanV\\ServidorExamenPráctico\\ServidorExamenPráctico\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Aron Aguilar\\AppData\\Roaming\\NuGet\\NuGet.Config",
