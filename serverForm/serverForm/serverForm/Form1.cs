@@ -23,9 +23,10 @@ namespace serverForm
         public Form1()
         {
             InitializeComponent();
+            actualizarTabla();
             Thread thread1 = new Thread(SetupServer);//Creamos un hilo que ejecute el método iniciar, el cual es basciamente la conexión, esto es para que, tal y como en Java, no se congele el form.
             thread1.Start();//iniciamos el hilo
-            actualizarTabla();
+            
         }
         private void SetupServer()
         {
@@ -33,7 +34,7 @@ namespace serverForm
             serverSocket.Listen(0);//poneemos el servidor en escucha
             //Vamos a llamar sockets de manera asincrona, Al usar sockets asíncronos, un servidor puede escuchar las conexiones entrantes y, mientras tanto, hacer alguna otra lógica, en contraste con el socket síncrono cuando están escuchando, bloquean el hilo principal y la aplicación deja de responder y se congelará hasta que el cliente se conecte.
             serverSocket.BeginAccept(AcceptCallback, null);//mantenemos el servidor aceptando conexiones
-            txtLog.AppendText("Servidor en linea \n");
+            //txtLog.AppendText("Servidor en linea \n");
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace serverForm
 
             clientSockets.Add(socket);//Añadimos a la lista
             socket.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, socket);//Listener para obtener mensajes, en lugar de mensajes ahora.
-            txtLog.AppendText("Cliente conectado... \n");
+            //txtLog.AppendText("Cliente conectado... \n");
             serverSocket.BeginAccept(AcceptCallback, null);//Llamada así mismo para crear un loop y continuar operando hasta que se cierre el socket.
         }
 
@@ -74,7 +75,7 @@ namespace serverForm
             catch (SocketException)
             {
                 //Si la conexión se apaga abruptamente cerramos los sockets y liberamos la lista.
-                txtLog.AppendText("\nUn cliente salio de manera forzada");
+                //txtLog.AppendText("\nUn cliente salio de manera forzada");
                 current.Close();
                 clientSockets.Remove(current);
                 return;
@@ -84,7 +85,7 @@ namespace serverForm
             byte[] recBuf = new byte[received]; //Guardamos los bytes en tamaños como se recibieron.
             Array.Copy(buffer, recBuf, received);//En los tutoriales vimos que guardaban esto por si acaso, no estamos seguros de en que "caso" pero pues igual aquí esta haha.
             string text = Encoding.UTF8.GetString(recBuf);//Guardamos el buffer como string
-            txtLog.AppendText($"\nTexto recibido{text}");
+            //txtLog.AppendText($"\nTexto recibido{text}");
             string[] conceptos = text.ToString().Split('%');//Hacemos split al string recibido para leer el mensaje adecuadamente, si hay que realizar alguna acción o registrar un nuevo cliente/actualizar.
             //El sistema que creamos toma en cuenta los valores en el string separados por los caracteres $ y % dependiendo del caso, por ejemplo, cuando queremos realizar algun comando como obtener los registros, enviamos '$Comando$%ActualizarCB', y con switchs hacemos una u otra operación que finalmente respondera al cliente con un string.
             switch (conceptos[0])
@@ -126,7 +127,7 @@ namespace serverForm
                             archivosBloqueados.Remove(conceptos[2]);
                             break;
                         case "Escritura":
-                            txtLog.AppendText("\nPreparando para escribir...");//si no traemos ningún comando entonces por defecto es una escritura.
+                            //txtLog.AppendText("\nPreparando para escribir...");//si no traemos ningún comando entonces por defecto es una escritura.
                             using (DataTable dtT = new DataTable())//Guardamos los datos en un datatable, este código ya lo teniamos, lo usamos Andoni y Aarón para otro proyecto, con este mismo código podemos generar archivos CSV con infinitas lineas, creando un 'DataTable' el cual es como un DataFrame en python o un modelo de tabla en java????? guarda la info pero nada más en forma de datos. Claro que para hacer este proyecto no utilizamos el código a su 100%.
                             {
                                 //Añadimos las columnas del datatable.
@@ -184,7 +185,7 @@ namespace serverForm
                                     Directory.CreateDirectory(director);
                                 }
                                 File.WriteAllText($@"{director}{conceptos[2]}.txt", sb.ToString(), Encoding.UTF8);//Mandamos a crear el archivo.
-                                txtLog.AppendText($@"\nGuardado satisfactoriamente en: {director} como {conceptos[2]}.txt");
+                                //txtLog.AppendText($@"\nGuardado satisfactoriamente en: {director} como {conceptos[2]}.txt");
                             };
                             break;
                         default:
@@ -281,8 +282,13 @@ namespace serverForm
                     conceptos[13],
                     conceptos[14]);
                 }
-            }
+                dgvItems.DataSource = dtT;            }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            actualizarTabla();
         }
     }
 }

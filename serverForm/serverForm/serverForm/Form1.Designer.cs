@@ -29,47 +29,50 @@ namespace serverForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtLog = new System.Windows.Forms.TextBox();
             this.dgvItems = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtLog
-            // 
-            this.txtLog.Location = new System.Drawing.Point(12, 12);
-            this.txtLog.Multiline = true;
-            this.txtLog.Name = "txtLog";
-            this.txtLog.Size = new System.Drawing.Size(340, 426);
-            this.txtLog.TabIndex = 0;
-            // 
             // dgvItems
             // 
+            this.dgvItems.AllowUserToAddRows = false;
+            this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItems.Location = new System.Drawing.Point(358, 12);
+            this.dgvItems.Location = new System.Drawing.Point(12, 12);
             this.dgvItems.Name = "dgvItems";
+            this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowTemplate.Height = 25;
-            this.dgvItems.Size = new System.Drawing.Size(430, 426);
+            this.dgvItems.Size = new System.Drawing.Size(776, 406);
             this.dgvItems.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(675, 424);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "actualizar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvItems);
-            this.Controls.Add(this.txtLog);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.DataGridView dgvItems;
+        private System.Windows.Forms.Button button1;
     }
 }
 
