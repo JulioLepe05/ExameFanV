@@ -26,13 +26,12 @@ namespace ExamenTeorico
         public Consulta(string datos)//constructor con datos nomás, ni idea de porque sigue aquí porque el código jamas entra por aquí o_0, 
         {
             InitializeComponent();
-            SendRequest("$Comando$%ActualizarCB");
 
         }
         public void iniciar()//creamos un metodo iniciar
         {
             ConnectToServer();//donde mandamos llamaar el metodo para conectar al servidor
-            SendRequest("$Comando$%ActualizarCB");//le estamos enviando un comando al servidor para que actualice el combo box y que muestre los archivos que tenmos guardados
+            
             RequestLoop(cbxListado, dgvShow,dgv4Cols);//loop para recibir las respuestas para el combo box y la tabla
 
         }
@@ -125,7 +124,7 @@ namespace ExamenTeorico
                     switch (conceptos[1])
                     {
                         case "COMBOBOX":
-                            cb.Invoke((MethodInvoker)(() => cb.SelectionLength=0));
+                           
                             cb.Invoke((MethodInvoker)(() => cb.Items.Clear()));
                             for (int i = 2; i < conceptos.Length - 1; i++)//se hace un ciclo donde tomamos la longitud del array
                                //y donde añadimos los datos al combobox
@@ -134,6 +133,7 @@ namespace ExamenTeorico
                                 
                                 cb.Invoke((MethodInvoker)(() => cb.Items.Add(conceptos[i])));
                             }
+                            cb.Invoke((MethodInvoker)(() => cb.SelectionLength = 0));
                             break;
                         case "DatosTXT"://en el caso de que el comando sea DatosTXT, añadiremos los datos a la tabla
                             using (DataTable dtT = new DataTable())//creamos una instancia para usar la tabla
@@ -187,9 +187,6 @@ namespace ExamenTeorico
 
                             };
                             //cerramos los casos y se detiene el switch
-                            break;
-                        case "ActualizarCB":
-                            SendRequest("$Comando$%ActualizarCB");
                             break;
                         default:
                             break;
@@ -327,7 +324,6 @@ namespace ExamenTeorico
                         //Frm.Show();
 
                         Frm.btnNuevo.Text = "Modificar";//cambiamos el nombre del boton
-                        this.Close();//escondemos este frame
                     }
                 }
                 else if (dialogResult == DialogResult.No)

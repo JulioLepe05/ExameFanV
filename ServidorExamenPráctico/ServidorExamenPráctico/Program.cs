@@ -122,13 +122,7 @@ namespace ServidorExamenPráctico
                             }
                             string itemsCB = $"BROADCAST$COMBOBOX${cadenaItems}";//Este es el mensaje que finalmente enviaremos a los clientes.
                             byte[] Items = Encoding.UTF8.GetBytes(itemsCB);
-
-                            foreach (object sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
-                            {
-                                Socket clienteEnTurno = (Socket)sok;
-                                
-                                clienteEnTurno.Send(Items);
-                            }
+                                current.Send(Items);
                             break;
                         case "datosDelTXT1":
                             var archivoALeer = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\{conceptos[2]}";
@@ -139,26 +133,12 @@ namespace ServidorExamenPráctico
                         case "Eliminar":
                             var archivoaBorrar = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\{conceptos[2]}";
                             File.Delete(archivoaBorrar);
-                            byte[] mensajes = Encoding.UTF8.GetBytes($"BROADCAST$ActualizarCB$");
-                            foreach (object sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
-                            {
-                                Socket clienteEnTurno = (Socket)sok;
-                                clienteEnTurno.Send(mensajes);
-                            }
                             break;
                         case "Bloquear":
                             archivosBloqueados.Add(conceptos[2]);
                             break;
                         case "DesBloquear":
-                            try
-                            {
                                 archivosBloqueados.Remove(conceptos[2]);
-                            }
-                            catch (Exception)
-                            {
-                                break;
-                            }
-                            
                             break;
                         case "Escritura":
                             Console.WriteLine("Se va a escribir en el server");//si no traemos ningún comando entonces por defecto es una escritura.
@@ -218,15 +198,9 @@ namespace ServidorExamenPráctico
                                 {
                                     Directory.CreateDirectory(director);
                                 }
-                                File.WriteAllText($@"{director}{conceptos[3]}.txt", sb.ToString(), Encoding.UTF8);//Mandamos a crear el archivo.
-                                Console.WriteLine($@"Guardado satisfactoriamente en: {director} como {conceptos[3]}.txt");
+                                File.WriteAllText($@"{director}{conceptos[2]}.txt", sb.ToString(), Encoding.UTF8);//Mandamos a crear el archivo.
+                                Console.WriteLine($@"Guardado satisfactoriamente en: {director} como {conceptos[2]}.txt");
                             };
-                            byte[] data2 = Encoding.UTF8.GetBytes("BROADCAST$ActualizarCB$%");//Mensaje de exito.
-                            foreach (object sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
-                            {
-                                Socket clienteEnTurno = (Socket)sok;
-                                clienteEnTurno.Send(data2);
-                            }
                             break;
                         default:
                             break;

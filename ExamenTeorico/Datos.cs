@@ -76,7 +76,7 @@ namespace ExamenTeorico
             txtCivil.Enabled = false;
 
             btnNuevo.Text = "Nuevo";//setea el nombre del boton
-            
+            SendRequest($"$Comando$%Desbloquear%{txtcodigo.Text}.txt");
 
             txtcodigo.Clear();//limpia los textos
             txtNombre.Clear();
@@ -93,7 +93,7 @@ namespace ExamenTeorico
             txtmain.Clear();
             txtJugador.Clear();
             txtCivil.Clear();
-            SendRequest($"$Comando$%Desbloquear%{txtcodigo.Text}.txt");
+            
         }
 
         public Datos(string ip, List<string> lista)//pasamos una lista 
@@ -221,7 +221,7 @@ namespace ExamenTeorico
             txtJugador.Enabled = true; //Activa el txt
             txtCivil.Enabled = true; //Activa el txt
             
-            if (btnNuevo.Text=="Nuevo") //condicion de si este campo de texto esta vacio o nulo
+            if (btnNuevo.Text=="Nuevo" && txtcodigo.Text=="") //condicion de si este campo de texto esta vacio o nulo
             {
                 Random r = new Random();//generan un numero aleatorio de 6 digitos
                 txtcodigo.Text = r.Next(100000, 999999) + "";//dentro de este rango
