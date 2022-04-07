@@ -184,6 +184,9 @@ namespace ExamenTeorico
                             };
                             //cerramos los casos y se detiene el switch
                             break;
+                        case "ActualizarCB":
+                            SendRequest("$Comando$%ActualizarCB");
+                            break;
                         default:
                             break;
                     }
@@ -218,37 +221,63 @@ namespace ExamenTeorico
         
         public void btnModificar_Click(object sender, EventArgs e)//evento del boton modificar al hacerle click
         {
-            
-            var list = new List<string>(15);//variable lista con un array de 15 elemento
-            for (int i = 0; i < 15; i++)
+            DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                //toma todos los valores de la tabla y los mete a una lista lista
-                list.Add(dgvShow.Rows[0].Cells[i].Value.ToString());
+                if (!dgvShow.RowCount.Equals(0))
+                {
+                    var list = new List<string>(15);//variable lista con un array de 15 elemento
+                    for (int i = 0; i < 15; i++)
+                    {
+                        //toma todos los valores de la tabla y los mete a una lista lista
+                        list.Add(dgvShow.Rows[0].Cells[i].Value.ToString());
+                    }
+
+
+                    //cambiamos entre paneles, entre el panel de consulta y el de datos
+                    this.Hide();//escondemos este frame
+                    panel.Controls.Clear();//limpiamos el panel
+                    Datos Frm = new Datos(ip2, list);//creamos una nueva instancia de la clase datos donde le pasamos la lista que acabamos de crear en el ciclo anterior
+                    Frm.TopLevel = false;
+                    panel.Controls.Add(Frm);//añadimos el frame al panel
+                    Frm.Show();//lo mostramos
+
+                    //Form1 frm = new Form1();
+                    //this.Hide();
+                    ////Frm.TopLevel = false;
+                    ////Frm.TopLevel = false;
+                    ////frm.panelPrincipal.Controls.Add();
+                    //Frm.Show();
+
+                    Frm.btnNuevo.Text = "Modificar";//cambiamos el nombre del boton
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                
             }
             
-
-            //cambiamos entre paneles, entre el panel de consulta y el de datos
-            this.Hide();//escondemos este frame
-            panel.Controls.Clear();//limpiamos el panel
-            Datos Frm = new Datos(ip2, list);//creamos una nueva instancia de la clase datos donde le pasamos la lista que acabamos de crear en el ciclo anterior
-            Frm.TopLevel = false;
-            panel.Controls.Add(Frm);//añadimos el frame al panel
-            Frm.Show();//lo mostramos
-
-            //Form1 frm = new Form1();
-            //this.Hide();
-            ////Frm.TopLevel = false;
-            ////Frm.TopLevel = false;
-            ////frm.panelPrincipal.Controls.Add();
-            //Frm.Show();
-
-            Frm.btnNuevo.Text = "Guardar";//cambiamos el nombre del boton
+            
 
 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (!dgvShow.RowCount.Equals(0))
+                {
+                    dgv4Cols.Rows.Clear();
+                    SendRequest($"$Comando$%Eliminar%{cbxListado.SelectedItem.ToString()}");
+                }
+                cbxListado.Items.Clear();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+            }
 
         }
 
@@ -256,6 +285,66 @@ namespace ExamenTeorico
         {
             //solicita los datos al servidor del item seleccionado en el combo box
             SendRequest($"$Comando$%datosDelTXT1%{cbxListado.SelectedItem.ToString()}");
+            dgv4Cols.Rows.Clear();//No queremos mostrar más de un dato así que lo limpiamos todo.
+        }
+
+        private void dgv4Cols_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex==4 && e.RowIndex==0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (!dgvShow.RowCount.Equals(0))
+                    {
+                        var list = new List<string>(15);//variable lista con un array de 15 elemento
+                        for (int i = 0; i < 15; i++)
+                        {
+                            //toma todos los valores de la tabla y los mete a una lista lista
+                            list.Add(dgvShow.Rows[0].Cells[i].Value.ToString());
+                        }
+
+
+                        //cambiamos entre paneles, entre el panel de consulta y el de datos
+                        this.Hide();//escondemos este frame
+                        panel.Controls.Clear();//limpiamos el panel
+                        Datos Frm = new Datos(ip2, list);//creamos una nueva instancia de la clase datos donde le pasamos la lista que acabamos de crear en el ciclo anterior
+                        Frm.TopLevel = false;
+                        panel.Controls.Add(Frm);//añadimos el frame al panel
+                        Frm.Show();//lo mostramos
+
+                        //Form1 frm = new Form1();
+                        //this.Hide();
+                        ////Frm.TopLevel = false;
+                        ////Frm.TopLevel = false;
+                        ////frm.panelPrincipal.Controls.Add();
+                        //Frm.Show();
+
+                        Frm.btnNuevo.Text = "Modificar";//cambiamos el nombre del boton
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
+            }
+            else if (e.ColumnIndex == 5 && e.RowIndex == 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Seguro?", "Confirmar", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (!dgvShow.RowCount.Equals(0))
+                    {
+                        dgv4Cols.Rows.Clear();
+                        SendRequest($"$Comando$%Eliminar%{cbxListado.SelectedItem.ToString()}");
+                    }
+                    cbxListado.Items.Clear();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
+            }
         }
     }
     

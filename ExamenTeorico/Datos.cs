@@ -98,6 +98,8 @@ namespace ExamenTeorico
         public Datos(string ip, List<string> lista)//pasamos una lista 
         {
             InitializeComponent();
+            Thread thread1 = new Thread(iniciar);//Creamos un hilo que ejecute el método iniciar, el cual es basciamente la conexión, esto es para que, tal y como en Java, no se congele el form.
+            thread1.Start();//iniciamos el hilo
             ip2 = ip;//ip2 es la ip que cargamos de un lado a otro, le damos un scope global para quitarnos de problemas.
 
 
@@ -360,13 +362,11 @@ namespace ExamenTeorico
                                                                         else
                                                                         {
                                                                             //guardamos todos los datos obtenidos en un string
-                                                                            datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGenero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
+                                                                            datos = $"$Comando$%Escritura%{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGenero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
 
                                                                             MessageBox.Show("Datos Guardados con Exito","Aviso del Sistema",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                                                        Thread thread1 = new Thread(iniciar);//Creamos un hilo que ejecute el método iniciar, el cual es basciamente la conexión, esto es para que, tal y como en Java, no se congele el form.
-                                                                        thread1.Start();//iniciamos el hilo
+                                                                        
                                                                         SendRequest(datos);//enviamos la cadena de texto con todos los datos, por medio de este metodo
-                                                                        SendRequest("exit");//cerramos el socket.
                                                                         }
                                                                     }
                                                                 }

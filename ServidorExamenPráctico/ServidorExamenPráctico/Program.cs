@@ -18,7 +18,7 @@ namespace ServidorExamenPráctico
         private const int PORT = 100;//puerto
         private static readonly byte[] buffer = new byte[BUFFER_SIZE];//esta variable se crea para los mensajes
 
-
+        private List<string> archivosBloqueados = new List<string>();
 
 
         static void Main()//constructor
@@ -127,6 +127,16 @@ namespace ServidorExamenPráctico
                             {
                                 Socket clienteEnTurno = (Socket)sok;
                                 clienteEnTurno.Send(datosTXT);
+                            }
+                            break;
+                        case "Eliminar":
+                            var archivoaBorrar = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\DBEXAMENTEORICO\{conceptos[2]}";
+                            File.Delete(archivoaBorrar);
+                            byte[] mensajes = Encoding.UTF8.GetBytes($"BROADCAST$ActualizarCB$");
+                            foreach (object sok in clientSockets)//Por cada cliente en nuestra lista, vamos a actualizar el combobox con los archivos guardados.
+                            {
+                                Socket clienteEnTurno = (Socket)sok;
+                                clienteEnTurno.Send(mensajes);
                             }
                             break;
                         case "Escritura":

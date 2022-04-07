@@ -120,9 +120,10 @@ namespace ExamenTeorico
             this.dgv4Cols.Name = "dgv4Cols";
             this.dgv4Cols.ReadOnly = true;
             this.dgv4Cols.RowHeadersVisible = false;
-            this.dgv4Cols.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv4Cols.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgv4Cols.Size = new System.Drawing.Size(789, 137);
             this.dgv4Cols.TabIndex = 76;
+            this.dgv4Cols.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv4Cols_CellClick);
             // 
             // dataGridViewTextBoxColumn1
             // 

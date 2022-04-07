@@ -33,8 +33,6 @@ namespace ExamenTeorico
             panelPrincipal.Controls.Add(Frm);//añadimos lo que queremos al panel del frame
             Frm.Show();//mostramos el frame de datos
 
-            btnNuevo.Enabled = false;
-            btnConsulta.Enabled = true;
 
         }
 
@@ -54,8 +52,6 @@ namespace ExamenTeorico
             panelPrincipal.Controls.Add(frmconsulta);//añadimos lo que queramos al panel
             frmconsulta.Show();//lo mostramos
 
-            btnConsulta.Enabled = false;
-            btnNuevo.Enabled = true;
         }
 
         private void button5_Click(object sender, EventArgs e)

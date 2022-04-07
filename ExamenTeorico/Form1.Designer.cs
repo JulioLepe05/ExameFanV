@@ -39,8 +39,10 @@ namespace ExamenTeorico
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtIP = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnConsulta
@@ -118,6 +120,7 @@ namespace ExamenTeorico
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtIP);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
@@ -128,7 +131,7 @@ namespace ExamenTeorico
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(357, 286);
+            this.button1.Location = new System.Drawing.Point(357, 436);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(202, 23);
             this.button1.TabIndex = 1;
@@ -138,10 +141,20 @@ namespace ExamenTeorico
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(357, 259);
+            this.txtIP.Location = new System.Drawing.Point(357, 365);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(202, 20);
             this.txtIP.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(168, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(611, 350);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -162,6 +175,7 @@ namespace ExamenTeorico
             this.panelPrincipal.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -176,6 +190,7 @@ namespace ExamenTeorico
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtIP;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
