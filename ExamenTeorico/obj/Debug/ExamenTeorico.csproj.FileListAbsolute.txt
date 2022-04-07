@@ -56,3 +56,16 @@ C:\Users\Aron Aguilar\Desktop\Tareas\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeo
 C:\Users\Aron Aguilar\Desktop\Tareas\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.exe
 C:\Users\Aron Aguilar\Desktop\Tareas\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.pdb
 C:\Users\Aron Aguilar\Desktop\Tareas\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.AssemblyReference.cache
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\bin\Debug\ExamenTeorico.exe.config
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\bin\Debug\ExamenTeorico.exe
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\bin\Debug\ExamenTeorico.pdb
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.AssemblyReference.cache
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.SuggestedBindingRedirects.cache
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.Consulta.resources
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.Datos.resources
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.Form1.resources
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.Properties.Resources.resources
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.GenerateResource.cache
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.csproj.CoreCompileInputs.cache
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.exe
+C:\Users\julio\source\repos\ExameFanV\ExamenTeorico\obj\Debug\ExamenTeorico.pdb

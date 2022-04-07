@@ -11,16 +11,17 @@ namespace ServidorExamenPráctico
 {
     class Program
     {
+        //creamos el socket del servidor
         private static readonly Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private static readonly List<Socket> clientSockets = new List<Socket>();
-        private const int BUFFER_SIZE = 2048;
-        private const int PORT = 100;
-        private static readonly byte[] buffer = new byte[BUFFER_SIZE];
+        private static readonly List<Socket> clientSockets = new List<Socket>();//lista que  guarda los sockets, que son los de los clientes
+        private const int BUFFER_SIZE = 2048;//le asignamos el tamaño del buffer
+        private const int PORT = 100;//puerto
+        private static readonly byte[] buffer = new byte[BUFFER_SIZE];//esta variable se crea para los mensajes
 
         
         
 
-        static void Main()
+        static void Main()//constructor
         {
             Console.Title = "Server";
             SetupServer();
@@ -32,9 +33,9 @@ namespace ServidorExamenPráctico
         private static void SetupServer()
         {
             Console.WriteLine("Setting up server...");
-            serverSocket.Bind(new IPEndPoint(IPAddress.Any, PORT));
-            serverSocket.Listen(0);
-            serverSocket.BeginAccept(AcceptCallback, null);
+            serverSocket.Bind(new IPEndPoint(IPAddress.Any, PORT));//enlazamos la ip del servidor y el puerto 
+            serverSocket.Listen(0);//poneemos el servidor en escucha
+            serverSocket.BeginAccept(AcceptCallback, null);//mantenemos el servidor aceptando conexiones
             Console.WriteLine("Server setup complete");
         }
 
@@ -44,13 +45,13 @@ namespace ServidorExamenPráctico
         /// </summary>
         private static void CloseAllSockets()
         {
-            foreach (Socket socket in clientSockets)
+            foreach (Socket socket in clientSockets)//por cada socket en la lista de cliente socket
             {
-                socket.Shutdown(SocketShutdown.Both);
+                socket.Shutdown(SocketShutdown.Both);//apaga el socket y lo cierra
                 socket.Close();
             }
 
-            serverSocket.Close();
+            serverSocket.Close();//cierra el socket del servidor
         }
 
         private static void AcceptCallback(IAsyncResult AR)

@@ -30,7 +30,7 @@ namespace ExamenTeorico
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Datos));
-            this.txtGebero = new System.Windows.Forms.TextBox();
+            this.txtGenero = new System.Windows.Forms.TextBox();
             this.txtCivil = new System.Windows.Forms.TextBox();
             this.btncancelar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -64,15 +64,15 @@ namespace ExamenTeorico
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtGebero
+            // txtGenero
             // 
-            this.txtGebero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtGebero.Enabled = false;
-            this.txtGebero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGebero.Location = new System.Drawing.Point(413, 38);
-            this.txtGebero.Name = "txtGebero";
-            this.txtGebero.Size = new System.Drawing.Size(151, 22);
-            this.txtGebero.TabIndex = 72;
+            this.txtGenero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtGenero.Enabled = false;
+            this.txtGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGenero.Location = new System.Drawing.Point(413, 38);
+            this.txtGenero.Name = "txtGenero";
+            this.txtGenero.Size = new System.Drawing.Size(151, 22);
+            this.txtGenero.TabIndex = 72;
             // 
             // txtCivil
             // 
@@ -422,10 +422,10 @@ namespace ExamenTeorico
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.BackColor = System.Drawing.Color.Maroon;
+            this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(930, 542);
             this.ControlBox = false;
-            this.Controls.Add(this.txtGebero);
+            this.Controls.Add(this.txtGenero);
             this.Controls.Add(this.txtCivil);
             this.Controls.Add(this.btncancelar);
             this.Controls.Add(this.btnNuevo);
@@ -472,7 +472,7 @@ namespace ExamenTeorico
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtGebero;
+        private System.Windows.Forms.TextBox txtGenero;
         private System.Windows.Forms.TextBox txtCivil;
         private System.Windows.Forms.Button btncancelar;
         private System.Windows.Forms.TextBox txtJugador;

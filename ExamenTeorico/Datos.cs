@@ -15,15 +15,13 @@ namespace ExamenTeorico
 {
     public partial class Datos : Form
     {
-        private static readonly Socket ClientSocket = new Socket
+        private static readonly Socket ClientSocket = new Socket//creamos un nuevo socket y se configura el socket, como el tipo de socket, y el protocolo que va a usar
             (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-        private const int PORT = 100;
+        private const int PORT = 100;//creamos una constante que utilizamos como puerto
 
         string datos;
 
-        //int codigo, edad, semestres;
-        //string nombre, apellidos, nacionalidad, genero, ciudad, estado, universidad, carrera, deporte, main, jugador, estadocivil;
 
         private void txtedad_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -36,8 +34,6 @@ namespace ExamenTeorico
 
         private void txtcodigo_TextChanged(object sender, EventArgs e)
         {
-            
-                //txtcodigo.ForeColor = Color.Black;
             
         }
 
@@ -67,7 +63,7 @@ namespace ExamenTeorico
             txtapellidos.Enabled = false;
             txtedad.Enabled = false;
             txtnacionalidad.Enabled = false;
-            txtGebero.Enabled = false;
+            txtGenero.Enabled = false;
             txtciudad.Enabled = false;
             txtestado.Enabled = false;
             txtuniversidad.Enabled = false;
@@ -86,7 +82,7 @@ namespace ExamenTeorico
             txtapellidos.Clear();
             txtedad.Clear();
             txtnacionalidad.Clear();
-            txtGebero.Clear();
+            txtGenero.Clear();
             txtciudad.Clear();
             txtestado.Clear();
             txtuniversidad.Clear();
@@ -98,19 +94,21 @@ namespace ExamenTeorico
             txtCivil.Clear();
         }
 
-        public Datos(List<string> lista)
+        public Datos(List<string> lista)//pasamos una lista 
         {
             InitializeComponent();
-            Thread thread1 = new Thread(iniciar);
-            thread1.Start();
-            if (lista != null)
+            Thread thread1 = new Thread(iniciar);//crea una instancia llamada hilo
+            thread1.Start();//iniciamos el hilo
+
+
+            if (lista != null)//si esta lista no está vacia, tomamos cada uno de los datos y se lo asignamos a cada textBox
             {
                 txtcodigo.Text=lista[0];
                 txtNombre.Text = lista[1];
                 txtapellidos.Text = lista[2];
                 txtedad.Text = lista[3];
                 txtnacionalidad.Text = lista[4];
-                txtGebero.Text = lista[5];
+                txtGenero.Text = lista[5];
                 txtciudad.Text = lista[6];
                 txtestado.Text = lista[7];
                 txtuniversidad.Text = lista[8];
@@ -125,20 +123,21 @@ namespace ExamenTeorico
 
         public void iniciar()
         {
-            ConnectToServer();
-            RequestLoop();
+            ConnectToServer();//la conexion al servidor
+            RequestLoop();//matenemos el servidor en escucha
 
         }
-        private static void ConnectToServer()
+        private static void ConnectToServer()//metodo de conexion
         {
-            int attempts = 0;
+            int attempts = 0;//iniciamos una variable attemps que sea igual a 0
 
-            while (!ClientSocket.Connected)
+            while (!ClientSocket.Connected)//mientras no haya una conexion al servidor
             {
                 try
                 {
-                    attempts++;
-                    ClientSocket.Connect(ip, PORT);
+                    attempts++;//intentamos conectarlo al servidor
+                    ClientSocket.Connect(IPAddress.Loopback, PORT);//pasamos la ip del servidor y el puerto
+                    //IPaddress junto con el loopback serian equivalente al localhost
                 }
                 catch (SocketException)
                 {
@@ -146,55 +145,55 @@ namespace ExamenTeorico
             }
 
         }
-        private static void RequestLoop()
+        private static void RequestLoop()//creamos el metdodo para mantener el servidor en escucha
         {
 
-            while (true)
+            while (true)//creamos un bucle infinito donde recibiremos la respuesta
             {
                 ReceiveResponse();
             }
         }
 
         /// <summary>
-        /// Close socket and exit program.
+        /// cerramos el socket y el programa
         /// </summary>
-        private static void Exit()
+        private static void Exit()//cerramos el socket
         {
-            SendString("exit"); // Tell the server we are exiting
-            ClientSocket.Shutdown(SocketShutdown.Both);
+            SendString("exit"); //mandamos un string de exit
+            ClientSocket.Shutdown(SocketShutdown.Both);//apagamos el socket
             ClientSocket.Close();
             Environment.Exit(0);
         }
 
         private static void SendRequest(string query)
         {
-            //Console.Write("Send a request: ");
-            //string request = Console.ReadLine();
+            
             SendString(query);
 
-            if (query.ToLower() == "exit")
+            if (query.ToLower() == "exit")//convertimos lo que se encuentra en la variable query a minusculas y si es igual a exit, hacemos lo siguiente
             {
-                Exit();
+                Exit();//cerramos el socket
             }
         }
 
-        /// <summary>
-        /// Sends a string to the server with ASCII encoding.
-        /// </summary>
-        private static void SendString(string text)
+        //buffer lo usamos para guardar informacion mientras lo enviamos de un lado o al otro
+        private static void SendString(string text)//enviamos una string al server con una codificacion UTF8
         {
-            byte[] buffer = Encoding.ASCII.GetBytes(text);
-            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None);
+            //como enviamos esta cadena y no es un exit, entonces ejecutamos este metodo.
+
+
+            byte[] buffer = Encoding.UTF8.GetBytes(text);//pasamos el string y lo guardamos e la variable buffer
+            ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None);//lo enviamos por el socket
         }
 
-        private static void ReceiveResponse()
+        private static void ReceiveResponse()//Creamos el metodo o funcion para recibir la respuesta
         {
-            var buffer = new byte[2048];
-            int received = ClientSocket.Receive(buffer, SocketFlags.None);
-            if (received == 0) return;
-            var data = new byte[received];
-            Array.Copy(buffer, data, received);
-            string text = Encoding.ASCII.GetString(data);
+            var buffer = new byte[2048];//creamos una variable tipo buffer y le asignamos un valor para su tamaño
+            int received = ClientSocket.Receive(buffer, SocketFlags.None);//cantidad de bytes recibidos en el mensaje
+            if (received == 0) return;//si no hay bytes en el mensaje, se regresa al bloque de codigo anterior
+            var data = new byte[received];//guardamos la info con el tamaño de datos que se hayan recibido
+            Array.Copy(buffer, data, received);//guardado de info en un array por si se llega a necesitar
+            string text = Encoding.UTF8.GetString(data);//buffer a string
             
             
 
@@ -209,7 +208,7 @@ namespace ExamenTeorico
             txtapellidos.Enabled = true; //Activa el txt
             txtedad.Enabled = true; //Activa el txt
             txtnacionalidad.Enabled = true; //Activa el txt
-            txtGebero.Enabled = true; //Activa el txt
+            txtGenero.Enabled = true; //Activa el txt
             txtciudad.Enabled = true; //Activa el txt
             txtestado.Enabled = true; //Activa el txt
             txtuniversidad.Enabled = true; //Activa el txt
@@ -220,10 +219,11 @@ namespace ExamenTeorico
             txtJugador.Enabled = true; //Activa el txt
             txtCivil.Enabled = true; //Activa el txt
             
-            if (txtcodigo == null)
+            if (!txtcodigo.Equals("")) //condicion de si este campo de texto esta vacio o nulo
             {
-                Random r = new Random();
-                txtcodigo.Text = r.Next(100000, 999999) + "";
+
+                Random r = new Random();//generan un numero aleatorio de 6 digitos
+                txtcodigo.Text = r.Next(100000, 999999) + "";//dentro de este rango
             }
 
             if (btnNuevo.Text == "Guardar")
@@ -231,34 +231,18 @@ namespace ExamenTeorico
                 
 
 
-                if (txtcodigo.Text.Length < 9)
-                {
-                    MessageBox.Show("Ingrese un codigo con el formato correcto", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtcodigo.Focus();
-                    txtcodigo.SelectAll();
-                }
-                else if (txtcodigo.Text == "")
-                {
-                    MessageBox.Show("Ingrese su Codigo", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtcodigo.Focus();
-                    txtcodigo.SelectAll();
-                }
-                else
-                {
-                   // bool esNumero;
-                   // esNumero = int.TryParse(txtcodigo.Text, out codigo);
 
-                    if (txtNombre.Text == "")
+
+                    if (txtNombre.Text == "" || txtNombre.Text.Contains("%"))//estas condiciones se encargan de validar que ningun campo este vacio
                     {
-                        MessageBox.Show("Ingrese su nombre", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        txtNombre.Focus();
-                        txtNombre.SelectAll();
+                        MessageBox.Show("Ingrese su nombre", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);//muestra un cuadro de texto con una alerta
+                        txtNombre.Focus();//manda el cursor donde se va a seleccionar
+                        txtNombre.SelectAll();//selecciona todo dentro de ese campo de texto
                     }
                     else
                     {
-                       // nombre = txtNombre.Text;
 
-                        if (txtapellidos.Text == "")
+                        if (txtapellidos.Text == "" || txtapellidos.Text.Contains("%"))
                         {
                             MessageBox.Show("Ingrese sus Apellidos", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             txtapellidos.Focus();
@@ -266,10 +250,9 @@ namespace ExamenTeorico
                         }
                         else
                         {
-                            //apellidos = txtapellidos.Text;
 
 
-                            if (txtedad.Text == "")
+                            if (txtedad.Text == "" || txtedad.Text.Contains("%"))
                             {
                                 MessageBox.Show("Ingrese su edad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 txtedad.Focus();
@@ -277,11 +260,9 @@ namespace ExamenTeorico
                             }
                             else
                             {
-                               // bool esnum;
-                               // esnum = int.TryParse(txtedad.Text, out edad);
 
 
-                                if (txtnacionalidad.Text == "")
+                                if (txtnacionalidad.Text == "" || txtnacionalidad.Text.Contains("%"))
                                 {
                                     MessageBox.Show("Ingrese su Nacionalidad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                     txtnacionalidad.Focus();
@@ -290,20 +271,18 @@ namespace ExamenTeorico
                                 }
                                 else
                                 {
-                                    //nacionalidad = txtnacionalidad.Text;
 
-                                    if (txtGebero.Text == "")
+                                    if (txtGenero.Text == "" || txtGenero.Text.Contains("%"))
                                     {
                                         MessageBox.Show("Ingrese su Genero", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                        txtGebero.Focus();
-                                        txtGebero.SelectAll();
+                                        txtGenero.Focus();
+                                        txtGenero.SelectAll();
                                     }
                                     else
                                     {
-                                       // genero = txtGebero.Text;
 
 
-                                        if (txtciudad.Text == "")
+                                        if (txtciudad.Text == "" || txtciudad.Text.Contains("%"))
                                         {
                                             MessageBox.Show("Ingrese su ciudad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                             txtciudad.Focus();
@@ -311,9 +290,8 @@ namespace ExamenTeorico
                                         }
                                         else
                                         {
-                                            //ciudad = txtciudad.Text;
 
-                                            if (txtestado.Text == "")
+                                            if (txtestado.Text == "" || txtestado.Text.Contains("%"))
                                             {
                                                 MessageBox.Show("Ingrese su estado", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                 txtestado.Focus();
@@ -321,9 +299,8 @@ namespace ExamenTeorico
                                             }
                                             else
                                             {
-                                                //estado = txtestado.Text;
 
-                                                if (txtuniversidad.Text == "")
+                                                if (txtuniversidad.Text == "" || txtuniversidad.Text.Contains("%"))
                                                 {
                                                     MessageBox.Show("Ingrese su Universidad", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                     txtuniversidad.Focus();
@@ -331,10 +308,9 @@ namespace ExamenTeorico
                                                 }
                                                 else
                                                 {
-                                                    //universidad = txtuniversidad.Text;
 
 
-                                                    if (txtcarrera.Text == "")
+                                                    if (txtcarrera.Text == "" || txtcarrera.Text.Contains("%"))
                                                     {
                                                         MessageBox.Show("Ingrese su Carrera", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                         txtcarrera.Focus();
@@ -342,9 +318,8 @@ namespace ExamenTeorico
                                                     }
                                                     else
                                                     {
-                                                        //carrera = txtcarrera.Text;
 
-                                                        if (txtsemestre.Text == "")
+                                                        if (txtsemestre.Text == "" || txtsemestre.Text.Contains("%"))
                                                         {
                                                             MessageBox.Show("Ingrese su Semestre", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                             txtsemestre.Focus();
@@ -352,10 +327,8 @@ namespace ExamenTeorico
                                                         }
                                                         else
                                                         {
-                                                            //bool esNum;
-                                                            //esNum = int.TryParse(txtsemestre.Text, out semestres);
 
-                                                            if (txtdeporte.Text == "")
+                                                            if (txtdeporte.Text == "" || txtdeporte.Text.Contains("%"))
                                                             {
                                                                 MessageBox.Show("Ingrese su Deporte Favorito", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                                 txtdeporte.Focus();
@@ -363,9 +336,8 @@ namespace ExamenTeorico
                                                             }
                                                             else
                                                             {
-                                                               // deporte = txtdeporte.Text;
 
-                                                                if (txtmain.Text == "")
+                                                                if (txtmain.Text == "" || txtmain.Text.Contains("%"))
                                                                 {
                                                                     MessageBox.Show("Ingrese su Main Favorito", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                                     txtmain.Focus();
@@ -373,9 +345,9 @@ namespace ExamenTeorico
                                                                 }
                                                                 else
                                                                 {
-                                                                    //main = txtmain.Text;
 
-                                                                    if (txtJugador.Text == "")
+
+                                                                    if (txtJugador.Text == "" || txtdeporte.Text.Contains("%"))
                                                                     {
                                                                         MessageBox.Show("Ingrese su Jugador Favorito de futbol", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                                         txtJugador.Focus();
@@ -383,9 +355,8 @@ namespace ExamenTeorico
                                                                     }
                                                                     else
                                                                     {
-                                                                        //jugador = txtJugador.Text;
 
-                                                                        if (txtCivil.Text == "")
+                                                                        if (txtCivil.Text == "" || txtCivil.Text.Contains("%"))
                                                                         {
                                                                             MessageBox.Show("Ingrese su Estado Civil", "Aviso del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                                                             txtCivil.Focus();
@@ -393,11 +364,11 @@ namespace ExamenTeorico
                                                                         }
                                                                         else
                                                                         {
-                                                                            //estadocivil = txtCivil.Text;
-                                                                            datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGebero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
+                                                                            //guardamos todos los datos obtenidos en un string
+                                                                            datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGenero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
 
                                                                             MessageBox.Show("Datos Guardados con Exito","Aviso del Sistema",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                                                            SendRequest(datos);
+                                                                            SendRequest(datos);//enviamos la cadena de texto con todos los datos, por medio de este metodo
                                                                         }
                                                                     }
                                                                 }
@@ -418,7 +389,7 @@ namespace ExamenTeorico
                     }
 
                 }
-            }
+            
             btnNuevo.Text = "Guardar"; //Cambia el texto del boton "Nuevo" a "Guardar"
 
 
@@ -438,7 +409,7 @@ namespace ExamenTeorico
             txtapellidos.Enabled = true; //Activa el txt
             txtedad.Enabled = true; //Activa el txt
             txtnacionalidad.Enabled = true; //Activa el txt
-            txtGebero.Enabled = true; //Activa el txt
+            txtGenero.Enabled = true; //Activa el txt
             txtciudad.Enabled = true; //Activa el txt
             txtestado.Enabled = true; //Activa el txt
             txtuniversidad.Enabled = true; //Activa el txt
@@ -648,25 +619,26 @@ namespace ExamenTeorico
             //}
             //btnModificar.Text = "Guardar";            
 
-            Consulta frmConsulta = new Consulta(datos);
+       
 
-        }
+       }
 
        
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            
+            //una variable llamada pregunta, donde sacamos un mensaje 
             var pregunta= MessageBox.Show("¿Desea Eliminar los Datos?", "Aviso del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             
+            //si pregunta es igual a la opcion seleccionada si
             if (pregunta.Equals(DialogResult.Yes))
             {
-                txtcodigo.Clear();
+                txtcodigo.Clear();//limpiamos los textBox
                 txtNombre.Clear();
                 txtapellidos.Clear();
                 txtedad.Clear();
                 txtnacionalidad.Clear();
-                txtGebero.Clear();
+                txtGenero.Clear();
                 txtciudad.Clear();
                 txtestado.Clear();
                 txtuniversidad.Clear();
@@ -677,7 +649,8 @@ namespace ExamenTeorico
                 txtJugador.Clear();
                 txtCivil.Clear();
 
-                datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGebero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
+                //retacamos todo a la variable tipo string, siendo el caso que ya estaria vacio
+                datos = $"{txtcodigo.Text}%{txtNombre.Text}%{txtapellidos.Text}%{txtedad.Text}%{txtnacionalidad.Text}%{txtGenero.Text}%{txtciudad.Text}%{txtestado.Text}%{txtuniversidad.Text}%{txtcarrera.Text}%{txtsemestre.Text}%{txtdeporte.Text}%{txtmain.Text}%{txtJugador.Text}%{txtCivil.Text}";
             }
             
 

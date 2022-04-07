@@ -30,7 +30,7 @@ namespace ExamenTeorico
 
             Datos Frm = new Datos(null);//creamos una nueva instancia donde llamamos el frame datos
             Frm.TopLevel = false;
-            panelPrincipal.Controls.Add(Frm);//añadimos lo que queremos al panel del form1
+            panelPrincipal.Controls.Add(Frm);//añadimos lo que queremos al panel del frame
             Frm.Show();//mostramos el frame de datos
 
         }
