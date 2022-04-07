@@ -20,9 +20,10 @@ namespace ExamenTeorico
             (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
         private const int PORT = 100;//creamos una constante que utilizamos como puerto
+        string ip2;//Ip que nos traemos de otros frames
 
         Panel panel;
-        public Consulta(string datos)
+        public Consulta(string datos)//constructor con datos nomás, ni idea de porque sigue aquí porque el código jamas entra por aquí o_0, 
         {
             InitializeComponent();
             
@@ -76,7 +77,6 @@ namespace ExamenTeorico
             SendString("exit"); //mandamos un string de exit
             ClientSocket.Shutdown(SocketShutdown.Both);//apagamos el socket
             ClientSocket.Close();
-            Environment.Exit(0);
         }
 
         private static void SendRequest(string query)
@@ -192,12 +192,13 @@ namespace ExamenTeorico
 
 
 
-        public Consulta(string datos, FlowLayoutPanel p)//constructos que requieres un string y un panel
+        public Consulta(string ip, string datos, FlowLayoutPanel p)//constructor que requieres un string y un panel, lo usamos en el form principal
         {
             InitializeComponent();
-            Thread thread1 = new Thread(iniciar);//creamos un hilo
+            ip2 = ip;
+            Thread thread1 = new Thread(iniciar);//creamos un hilo para que corra una conexión y consulte los datos.
             thread1.Start();//lo iniciamos
-            dgvShow.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//mostramos la tabla y rellenamos sus columnas
+            dgvShow.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;//formato a la tabla para que las columnas se muestren machin
             panel = p;
         }
 
@@ -223,7 +224,7 @@ namespace ExamenTeorico
             //cambiamos entre paneles, entre el panel de consulta y el de datos
             this.Hide();//escondemos este frame
             panel.Controls.Clear();//limpiamos el panel
-            Datos Frm = new Datos(list);//creamos una nueva instancia de la clase datos donde le pasamos la lista que acabamos de crear en el ciclo anterior
+            Datos Frm = new Datos(ip2, list);//creamos una nueva instancia de la clase datos donde le pasamos la lista que acabamos de crear en el ciclo anterior
             Frm.TopLevel = false;
             panel.Controls.Add(Frm);//añadimos el frame al panel
             Frm.Show();//lo mostramos
